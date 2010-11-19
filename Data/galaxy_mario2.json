@@ -2,7 +2,7 @@
 	"CanvasColor" : [255, 107, 7, 105],
 	"Scale" : 10,
 	"Physics" : true,
-	"PlayerSpawn" : [ -20.0, -8.0],
+	"PlayerSpawn" : [ -20.0, -10.0],
 	"Music" : "Colugo-Fantastic_face.ogg",
 	"Warps" : [
 		{
@@ -228,18 +228,18 @@
 					},
 					"Physics" : {
 						"Type" : "Static",
-						"Filter" : 1,
 						"Position" : [ 7.0, -8.0],
 						"Rotation" : 0.0,
 						"Shapes" : [
 							{
 								"Type" : "Rectangle",
+							"categoryBits" : 1,
 								"Width" : 3.0,
 								"Height" : 0.25,
 								"Position" : [ 0.0, -3.5],
-								"Density" : 0.0,
-								"Friction" : 1.3,
-								"Restitution" : 0.25
+								"density" : 0.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
 							}
 						]
 					}
@@ -260,18 +260,18 @@
 					},
 					"Physics" : {
 						"Type" : "Static",
-						"Filter" : 1,
 						"Position" : [ 50.0, -8.0],
 						"Rotation" : 0.0,
 						"Shapes" : [
 							{
 								"Type" : "Rectangle",
+								"categoryBits" : 1,
 								"Width" : 3.0,
 								"Height" : 0.1,
 								"Position" : [ 0.0, -3.65],
-								"Density" : 0.0,
-								"Friction" : 1.3,
-								"Restitution" : 0.25
+								"density" : 0.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
 							}
 						]
 					}
@@ -292,18 +292,18 @@
 					},
 					"Physics" : {
 						"Type" : "Static",
-						"Filter" : 1,
 						"Position" : [ 55.0, -11.0],
 						"Rotation" : 0.0,
 						"Shapes" : [
 							{
 								"Type" : "Rectangle",
+								"categoryBits" : 1,
 								"Width" : 3.0,
 								"Height" : 0.25,
 								"Position" : [ 0.0, -3.5],
-								"Density" : 0.0,
-								"Friction" : 1.3,
-								"Restitution" : 0.25
+								"density" : 0.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
 							}
 						]
 					}
@@ -324,18 +324,18 @@
 					},
 					"Physics" : {
 						"Type" : "Static",
-						"Filter" : 1,
 						"Position" : [ 52.0, -13.0],
 						"Rotation" : 0.0,
 						"Shapes" : [
 							{
 								"Type" : "Rectangle",
+							"categoryBits" : 1,
 								"Width" : 3.0,
 								"Height" : 0.25,
 								"Position" : [ 0.0, -3.5],
-								"Density" : 0.0,
-								"Friction" : 1.3,
-								"Restitution" : 0.25
+								"density" : 0.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
 							}
 						]
 					}
@@ -362,17 +362,17 @@
 					},
 					"Physics" : {
 						"Type" : "Static",
-						"Filter" : 256,
 						"Position" : [ -25.0, 45.5],
 						"Rotation" : 0.0,
 						"Shapes" : [
 							{
 							"Type" : "Circle",
-							"Radius" : 25.6,
+							"categoryBits" : 256,
+							"radius" : 25.6,
 							"Position" : [ 0.0, 0.0],
-							"Density" : 0.0,
-							"Friction" : 1.3,
-							"Restitution" : 0.25
+							"density" : 0.0,
+							"friction" : 1.3,
+							"restitution" : 0.25
 							}
 						]
 					},
@@ -396,18 +396,18 @@
 					},
 					"Physics" : {
 						"Type" : "Static",
-						"Filter" : 256,
 						"Position" : [ 0.0, 0.0],
 						"Rotation" : 0.0,
 						"Shapes" : [
 							{
 								"Type" : "Rectangle",
+								"categoryBits" : 256,
 								"Width" : 27.2,
 								"Height" : 8.0,
 								"Position" : [ 0.0, 0.0],
-								"Density" : 0.0,
-								"Friction" : 1.3,
-								"Restitution" : 0.25
+								"density" : 0.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
 							}
 						]
 					},
@@ -431,18 +431,18 @@
 					},
 					"Physics" : {
 						"Type" : "Static",
-						"Filter" : 256,
 						"Position" : [ 60.0, 0.0],
 						"Rotation" : 0.0,
 						"Shapes" : [
 							{
 								"Type" : "Rectangle",
+								"categoryBits" : 256,
 								"Width" : 27.2,
 								"Height" : 8.0,
 								"Position" : [ 0.0, 0.0],
-								"Density" : 0.0,
-								"Friction" : 1.3,
-								"Restitution" : 0.25
+								"density" : 0.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
 							}
 						]
 					},
@@ -457,32 +457,24 @@
 			"Children" : [
 				{
 					"Name" : "squareplanet",
-					"Renderable" : {
-						"Type" : "Sprite",
-						"Layer" : 0,
-						"Image" : "Levels/squareplanet.png",
-						"ColorMod" : [255, 255, 255, 255],
-						"xScale" : 0.5,
-						"yScale" : 0.5
-					},
 					"Transform" : {
 						"Position" : [ -20.0, -25.0],
 						"Rotation" : 0.0
 					},
 					"Physics" : {
 						"Type" : "Static",
-						"Filter" : 4096,
 						"Position" : [ -20.0, -25.0],
 						"Rotation" : 0.0,
 						"Shapes" : [
 							{
 							"Type" : "Rectangle",
+							"categoryBits" : 4096,
 							"Width" : 3.2,
 							"Height" : 3.2,
 							"Position" : [ 0.0, 0.0],
-							"Density" : 0.2,
-							"Friction" : 1.3,
-							"Restitution" : 0.25
+							"density" : 0.2,
+							"friction" : 1.3,
+							"restitution" : 0.25
 							}
 						]
 					}
@@ -503,21 +495,22 @@
 					},
 					"Physics" : {
 						"Type" : "Dynamic",
-						"Filter" : 256,
 						"Position" : [ -20.0, -15.0],
 						"Rotation" : 0.0,
 						"Shapes" : [
 							{
 							"Type" : "Polygon",
+							"categoryBits" : 256,
+							"maskBits" : 61695,
 							"Vertices" : [
 								[-3.0, -3.0],
 								[3.0, -2.5],
 								[3.0, 2.5]
 							],
 							"Position" : [ 0.0, 0.0],
-							"Density" : 20.0,
-							"Friction" : 1.3,
-							"Restitution" : 0.25
+							"density" : 500.0,
+							"friction" : 1.3,
+							"restitution" : 0.25
 							}
 						]
 					},
@@ -541,26 +534,36 @@
 					},
 					"Physics" : {
 						"Type" : "Dynamic",
-						"Filter" : 256,
 						"Position" : [ -15.0, -25.0],
 						"Rotation" : 0.0,
+						"fixedRotation" : true,
 						"Shapes" : [
 							{
 							"Type" : "Polygon",
+							"categoryBits" : 256,
+							"maskBits" : 61695,
 							"Vertices" : [
 								[-3.0, -3.0],
 								[3.0, -2.5],
 								[3.0, 2.5]
 							],
 							"Position" : [ 0.0, 0.0],
-							"Density" : 20.0,
-							"Friction" : 1.3,
-							"Restitution" : 0.25
+							"density" : 500.0,
+							"friction" : 1.3,
+							"restitution" : 0.25
 							}
 						]
 					},
 					"Planet" : {
 						"Gravity" : 6.0
+					},
+					"Floating" : {
+						"Speed" : 2.0,
+						"Loop" : true,
+						"Points" : [
+							[ -10.0, -25.0],
+							[ 35.0, -25.0]
+						]
 					}
 				}
 			]
@@ -573,18 +576,8 @@
 			"ObjectB" : "squareplanet",
 			"Position" : [ -20.0, -25.0],
 			"enableMotor" : true,
-			"motorSpeed" : 0.5,
-			"maxMotorTorque" : 500.0
-		},
-		{
-			"Type" : "Prismatic",
-			"ObjectA" : "squareplanet",
-			"ObjectB" : "triplanet2",
-			"Position" : [ -20.0, -25.0],
-			"Axis" : [ 1.0, 0.0],
-			"enableMotor" : true,
-			"motorSpeed" : 0.5,
-			"maxMotorForce" : 500.0
+			"motorSpeed" : 0.25,
+			"maxMotorTorque" : 25000.0
 		}
-	]	
+	]
 }
