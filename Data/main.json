@@ -1,0 +1,87 @@
+{
+	"WindowSize" : [768, 480],
+	"FullScreen" : false,
+	"UpdateInterval" : 20.0,
+	"StartState" : "TitleState",
+	"Cursor" : {
+		"Image" : "cursor.png",
+		"Center" : [ 0, 0]
+	},
+	"ButtonMaps" : [
+		{
+			"Action" : "Game.Quit",
+			"Key" : "kbEscape",
+			"Type" : "action"
+		},
+		{
+			"Action" : "Menu.Up",
+			"Key" : "kbUp",
+			"Type" : "action"
+		},
+		{
+			"Action" : "Menu.Down",
+			"Key" : "kbDown",
+			"Type" : "action"
+		},
+		{
+			"Action" : "Menu.Select",
+			"Keys" : ["kbEnter", "kbSpace", "kbReturn"],
+			"Type" : "action"
+		},
+		{
+			"Action" : "Menu.MouseSelect",
+			"Key" : "msLeft",
+			"Type" : "action"
+		},
+		{
+			"Action" : "Play.MoveRight",
+			"Key" : "kbD",
+			"Type" : "action"
+		},
+		{
+			"Action" : "Play.MoveLeft",
+			"Key" : "kbA",
+			"Type" : "action"
+		},
+		{
+			"Action" : "Play.Run",
+			"Key" : "kbLeftShift",
+			"Type" : "action"
+		},
+		{
+			"Action" : "Play.Jump",
+			"Key" : "kbSpace",
+			"Type" : "action"
+		},
+		{
+			"Action" : "Play.Fire",
+			"Key" : "msLeft",
+			"Type" : "action"
+		},
+		{
+			"Action" : "Play.Swap",
+			"Key" : "kbQ",
+			"Type" : "action"
+		},
+		{
+			"Action" : "Play.UseMario",
+			"Key" : "kbM",
+			"Type" : "action"
+		},
+		{
+			"Action" : "Play.UseLuigi",
+			"Key" : "kbL",
+			"Type" : "action"
+		},
+		{
+			"Action" : "Cheat.Reload",
+			"Key" : "kbR",
+			"Type" : "action"
+		},
+		{
+			"Action" : "Cheat.Next",
+			"Key" : "kbN",
+			"Type" : "action"
+		}
+	]
+}

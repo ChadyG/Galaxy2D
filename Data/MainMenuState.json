@@ -1,0 +1,16 @@
+[
+	{
+		"Type" : "Button",
+		"Name" : "StartButton",
+		"Image" : "startbutton.png",
+		"Position" : [ 240, 200],
+		"Size" : [ 64, 24]
+	},
+	{
+		"Type" : "Button",
+		"Name" : "LoadButton",
+		"Image" : "loadbutton.png",
+		"Position" : [ 240, 250],
+		"Size" : [ 64, 24]
+	}
+]

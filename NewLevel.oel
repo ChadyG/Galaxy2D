@@ -1,0 +1,7 @@
+<level Scale="10" Music="" PlayerSpawn_X="0.0" PlayerSpawn_Y="0.0">
+  <width>1280</width>
+  <height>680</height>
+  <Background>
+    <cloud x="360" y="240" width="270" height="160"/>
+  </Background>
+</level>

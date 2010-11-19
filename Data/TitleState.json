@@ -1,0 +1,10 @@
+{
+	"Screens" : [
+		{
+			"Image" : "BT_Title_screen.png",
+			"Duration" : 2.0,
+			"FadeTo" : [ 0, 0, 0],
+			"DecayTime" : 2.0
+		}
+	]
+}

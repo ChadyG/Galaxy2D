@@ -1,0 +1,8 @@
+========================================
+Galaxy2D - TODO list
+========================================
+
+ - Proper inventory
+ - Level creation workflow
+ - Enemy AI
+ - tighten movement
