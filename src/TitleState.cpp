@@ -52,7 +52,8 @@ void TitleState::init()
 
 	std::string tString;
 	std::wstring filename;
-
+	
+	//OVERKILL!
 	for (int i = 0; i < json["Screens"].size(); ++i) {
 		tString = json["Screens"][i].get("Image", "default.png").asString();
 		filename = Gosu::resourcePrefix() + L"Images/" + Gosu::widen(tString);

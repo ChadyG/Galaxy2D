@@ -44,6 +44,12 @@ MainMenuState::MainMenuState( std::wstring _config )
 void MainMenuState::init()
 {	
 	m_Engine = Core::getCurrentContext();
+	
+	m_Engine->getData()["test"] = Json::Value(0.1);
+	
+	Json::StyledWriter writer;
+	writer.writeFile( Gosu::narrow(Gosu::resourcePrefix() + L"Data/menutest.json"), m_Engine->getData() );
+	
 
 	m_Font.reset( new Gosu::Font(m_Engine->graphics(), Gosu::defaultFontName(), 20));
 
@@ -103,6 +109,7 @@ void MainMenuState::update()
 	if (input->query("Menu.MouseSelect") == InputManager::actnBegin) {
 		m_CursorSelect->play();
 		if (m_CursorPos == 0) {
+			//push new GameState( savefile )
 			m_Engine->pushState( new AdventureState( std::wstring(L"galaxy_mario2") ) );
 		}
 		if (m_CursorPos == 1) {

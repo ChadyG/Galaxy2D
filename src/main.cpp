@@ -57,6 +57,7 @@ int main(int argc, char* argv[])
 	win.setCurrentContext(&win);
 
 	// Input stuff!
+	//need to push this initialization crap into inputmanager
 	InputManager* iman = InputManager::getCurrentContext();
 	for (int i = 0; i < json["ButtonMaps"].size(); ++i) {
 		str = json["ButtonMaps"][i].get("Type", "action").asString();
@@ -123,7 +124,7 @@ int main(int argc, char* argv[])
 
 	// Create and add a title state to our game object
 	if (!mapload) {
-		TitleState *state = new TitleState( Gosu::widen(json.get("StartState", "AdventureState").asString()) );
+		TitleState *state = new TitleState( Gosu::widen(json.get("StartState", "TitleState").asString()) );
 		win.pushState( state );
 	}
 

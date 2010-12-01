@@ -27,7 +27,7 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
  */
 #include "ContactListener.h"
-#include <Box2D.h>
+#include <Box2D/Box2D.h>
 
 #include "Scene/SceneObject.h"
 #include "../Scene/GalPlayer.h"

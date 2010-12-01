@@ -42,6 +42,8 @@
 			<object name="planet" image="Images/Levels/Planet64.png" width="64" height="64" resizableX="true" resizableY="true" rotatable="true" rotatePrecision="1" />
 			<object name="planet" image="Images/Levels/Planet128.png" width="128" height="128" resizableX="true" resizableY="true" rotatable="true" rotatePrecision="1" />
 			<object name="planet" image="Images/Levels/Planet512.png" width="512" height="512" resizableX="true" resizableY="true" rotatable="true" rotatePrecision="1" />
+			<object name="planet" image="Images/Levels/squareplanet.png" width="128" height="128" resizableX="true" resizableY="true" rotatable="true" rotatePrecision="1" />
+			<object name="planet" image="Images/Levels/triplanet.png" width="64" height="64" resizableX="true" resizableY="true" rotatable="true" rotatePrecision="1" />
 		</folder>
 		<folder name="platforms">
 			<object name="cliff" image="Images/Levels/Cliff.png" width="96" height="96" resizableX="true" resizableY="true" rotatable="true" rotatePrecision="1" />

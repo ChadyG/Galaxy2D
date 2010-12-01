@@ -1,6 +1,57 @@
 {
 	"PlayerDefinition" : "PlayerDef",
 	"Levels" : [
-		"galaxy_mario2"
+		"galaxy_mario"
+	],
+	"Worlds" : [
+		{
+			"Name" : "World1",
+			"connections" : [
+				[0, 1],
+				[1, 0]
+			],
+			"Levels" : [
+				{
+					"name" : "level1",
+					"drawPos" : [ 1, 1],
+					"file" : "galaxy_mario2",
+					"onFinish" : [
+						"galaxy_mario"
+					]
+				},
+				{
+					"name" : "level2",
+					"drawPos" : [ 2, 1],
+					"file" : "galaxy_mario",
+					"onFinish" : [
+						"galaxy_mario3",
+						"galaxy_mario4"
+					]
+				},
+				{
+					"name" : "level3",
+					"drawPos" : [ 3, 1],
+					"file" : "galaxy_mario3",
+					"onFinish" : [
+						"galaxy_mario3"
+					],
+					"onAltFinish" : [
+						"galaxy_bonus1"
+					]
+				}
+			]
+		}
 	]
 }
+
+- World1
+	- level 1
+	- level 2
+	...
+- World2
+	- level 11
+	- level 12
+	...
+
+Each level is a node in the world graph
+access to each node is dependent on completion of a level or other game flag

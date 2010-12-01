@@ -42,24 +42,29 @@ AdventureState::AdventureState( std::wstring _config )
 {
 	m_ConfigFile = _config;
 	m_Engine = Core::getCurrentContext();
+	
+	
+	m_Engine->getData()["test2"] = Json::Value(true);
+	
+	Json::StyledWriter writer;
+	writer.writeFile( Gosu::narrow(Gosu::resourcePrefix() + L"Data/adventuretest.json"), m_Engine->getData() );
 
-	//
-	//=====BEGIN SCENE PASTE=====
+	//Physics stuff
 	m_TimeStep = 1.0f / 50.0f;
 	m_VelIterations = 10;
 	m_PosIterations = 10;
 	
+	//Render settings
 	m_Width = m_Engine->graphics().width();
 	m_Height = m_Engine->graphics().height();
 	m_Zoom = 1.0;
 	m_Rot = 0.0;
 	m_Orientation = 0.0;
 	
+	//Meh
 	m_rendMan.reset();
 	m_audMan.reset();
 	m_World.reset();
-	//=====END SCENE PASTE=====
-	//
 }
 
 //This should take a parameter for new player or existing
@@ -67,21 +72,9 @@ void AdventureState::init()
 {	
 	m_Engine = Core::getCurrentContext();
 	m_Engine->showCursor( true );
-	
-	//m_Scene.reset( new Scene(m_ConfigFile));
-	//m_Scene->registerManagers();
-
-
-	//scenegraph + register
-	//rendermanager + register
-	//audiomanager + register
-
-	//physics world + register on scenegraph
-	
-	//m_Scene->initPlayer( );//&m_Player );
 
 	//
-	//=====BEGIN SCENE PASTE=====
+	//Create managers and register them
 	m_Graph.reset( new SceneGraph() );
 	m_rendMan.reset( new RenderManager() );
 	m_audMan.reset( new AudioManager() );
@@ -106,33 +99,31 @@ void AdventureState::init()
 	
 	//
 	// Read in JSON encoded file
-	
-	int i, layer;
-	std::string tString;
+	//FIXME: using level file here
 
 	Json::Value jVal;
 	Json::Reader reader;
 	reader.parseFile( Gosu::narrow(Gosu::resourcePrefix() + L"Data/" + m_ConfigFile + L".json"), jVal);
 	
 	// Player spawn
-	m_PlayerPos.Set((float32)jVal["PlayerSpawn"].get(0u, 0.0).asDouble(), (float32)jVal["PlayerSpawn"].get(1u, 0.0).asDouble());
+	m_PlayerPos.Set(
+		(float32)jVal["PlayerSpawn"].get(0u, 0.0).asDouble(), 
+		(float32)jVal["PlayerSpawn"].get(1u, 0.0).asDouble());
 	
 
-	//m_Player.init();
 	//
-	//=====BEGIN SCENE PASTE===== PlayerInit
-	//m_CharBill = new GalPlayer();
-	//m_CharBill->init();
-	//m_CharBill->setPhysics( m_PlayerPos.x, m_PlayerPos.y, m_World.get());
-	//m_CharBill->setLayer( 0 );
+	//=====PlayerInit
+	//m_Player = new GalPlayer();
+	//m_Player->init();
+	//m_Player->setPhysics( m_PlayerPos.x, m_PlayerPos.y, m_World.get());
+	//m_Player->setLayer( 0 );
 
-	m_CharBob = new GalPlayer();
-	m_CharBob->init(GalPlayer::char_bill);
-	m_CharBob->setPhysics( m_PlayerPos.x, m_PlayerPos.y, m_World.get());
-	m_CharBob->setLayer( 0 );
+	m_Player = new GalPlayer();
+	m_Player->init(GalPlayer::char_bill);
+	m_Player->setPhysics( m_PlayerPos.x, m_PlayerPos.y, m_World.get());
+	m_Player->setLayer( 0 );
 	
-	m_Player = m_CharBob;
-	//=====END SCENE PASTE=====
+	//=====
 	//
 
 
@@ -153,6 +144,7 @@ void AdventureState::init()
 
 	// Configure camera stuff
 	// Set up layer scales
+	int i;
 	for (i = 0; i < jVal["Layers"].size(); ++i) {
 		m_Camera.addLayer(jVal["Layers"][i]["Layer"].asInt(), jVal["Layers"][i]["Scale"].asDouble());
 	}
@@ -166,8 +158,6 @@ void AdventureState::init()
 	CameraTransform camtrans = m_Camera.worldToScreen(m_Focus[0], m_Focus[1], 1);
 	m_Offset[0] = camtrans.x;
 	m_Offset[1] = camtrans.y;
-	//m_Offset[0] = m_Focus[0]*m_Scale*m_Zoom - m_Width/2;
-	//m_Offset[1] = m_Height - m_Focus[1]*m_Scale*m_Zoom - m_Height/2;
 
 	// Set up warp points
 	/*for (i = 0; i < jVal["Warps"].size(); ++i) {
@@ -183,9 +173,10 @@ void AdventureState::init()
 		m_Warps.push_back( twarp );
 	}*/
 	
-	// Dig down to the actual scene objects
+	// Create all scene objects from file
 	m_Graph->loadFile( m_ConfigFile );
 
+	//Testing
 	//m_Graph->writeFile( L"loltest" );
 	
 	//Pass off song creation/management to manager
@@ -194,8 +185,6 @@ void AdventureState::init()
 		Gosu::resourcePrefix() + L"Sound/" + Gosu::widen( jVal.get("Music", "song.mp3").asString()), 
 		"Background");
 	m_audMan->playSong("Background", true);
-	//=====END SCENE PASTE=====
-	//
 }
 
 void AdventureState::cleanup()
@@ -207,15 +196,15 @@ void AdventureState::cleanup()
 void AdventureState::update()
 {
 	//
-	// Clear current contacts (IMPORTANT! Box2D sends EndContact on body deletion, I DO NOT WANT)
+	// Clear current contacts 
+	//  (IMPORTANT! Box2D sends EndContact on body deletion, I DO NOT WANT)
 	m_ContactListener.clear();
+	
 	// Step physics simulation
 	m_World->Step(m_TimeStep, m_VelIterations, m_PosIterations);
 	m_ContactListener.Update();
 	
 	m_Player->update(true);
-	//m_CharBill->update( (m_Player == m_CharBill) );
-	//m_CharBob->update( (m_Player == m_CharBob) );
 	b2Vec2 m_PlayerPos = m_Player->getPosition();
 
 	m_audMan->doPlay();
@@ -231,7 +220,7 @@ void AdventureState::update()
 		//m_Player->swapChar(Player::char_bob);
 		m_Player = m_CharBob;
 	}
-	*/
+*/
 	// Galaxy Camera stuff
 	b2Vec2 gravity = m_Player->getGravity();
 	
@@ -248,11 +237,12 @@ void AdventureState::update()
 	m_Rot += diff/40.0;
 	// end Galaxy
 	
+	//zoom based on movement speed
 	float zoom = 0.5 + (20.0 - m_Player->getSpeed())/20.0;
 	m_Zoom += (zoom - m_Zoom)/100.0;
 	m_Zoom = Gosu::clamp(m_Zoom, 0.95, 1.25);
 
-	// We need to know where to draw 
+	// Focus camera on player
 	m_Focus[0] = m_PlayerPos.x;
 	m_Focus[1] = m_PlayerPos.y - 2.0;
 	
@@ -260,19 +250,22 @@ void AdventureState::update()
 	m_Offset[0] = m_Focus[0]*m_Scale*m_Zoom - m_Width/2;
 	m_Offset[1] = m_Height - m_Focus[1]*m_Scale*m_Zoom - m_Height/2;
 
+	//All of these things need to know what we are looking at!
 	m_rendMan->setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot);
 	m_audMan->setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot);
-	input->setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot);
+	input->setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot); //only for mouse to world transform
 	
 	// Begin Scene object stuff
+	
+	m_Graph->update();
 
-	b2AABB space;
-	space.lowerBound = b2Vec2(m_Focus[0] - m_Width/2, m_Focus[1] - m_Height/2);
-	space.upperBound = b2Vec2(m_Focus[0] + m_Width/2, m_Focus[1] + m_Height/2);
+	//This trigger stuff is old and needs to be wrapped up somewhere in the engine
+	//b2AABB space;
+	//space.lowerBound = b2Vec2(m_Focus[0] - m_Width/2, m_Focus[1] - m_Height/2);
+	//space.upperBound = b2Vec2(m_Focus[0] + m_Width/2, m_Focus[1] + m_Height/2);
 	
 	// Update scene objects
 	// Do callbacks for areas
-	m_Graph->update();
 	/*
 	std::map< Gosu::ZPos, SpriteLayer >::iterator itL;
 	for (itL = m_Layers.begin(); itL != m_Layers.end(); ++itL) {
@@ -333,7 +326,6 @@ void AdventureState::update()
 
 void AdventureState::draw() const
 {
-	//m_Scene->draw();
 	// Canvas color
 	m_Engine->graphics().drawQuad( 0, 0, m_canvasColor, 
 		m_Width, 0, m_canvasColor,
@@ -341,6 +333,7 @@ void AdventureState::draw() const
 		m_Width, m_Height, m_canvasColor, -10);
 	
 	// Render all
+	//m_rendMan->setColor(m_colorMod);
 	m_rendMan->doRender();
 }
 

@@ -15,17 +15,17 @@
 		{
 			"ID" : "background",
 			"Layer" : -4,
-			"Scale" : 100.0
+			"Scale" : 10.0
 		},
 		{
 			"ID" : "midground",
 			"Layer" : -3,
-			"Scale" : 50.0
+			"Scale" : 5.0
 		},
 		{
 			"ID" : "nearmidground",
 			"Layer" : -2,
-			"Scale" : 10.0
+			"Scale" : 2.0
 		},
 		{
 			"ID" : "behind_player",
@@ -377,7 +377,7 @@
 						]
 					},
 					"Planet" : {
-						"Gravity" : 25.0
+						"Gravity" : 15.0
 					}
 				},
 				{

@@ -29,7 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #include <MUGE.h>
-#include <Box2D.h>
+#include <Box2D/Box2D.h>
 #include "GalPlayer.h"
 #include "PlanetObj.h"
 #include "../Inventory/Weapon.h"
@@ -209,7 +209,7 @@ void GalPlayer::init(character _char)
 		m_MaxSpeed = 12.0f; // Max velocity
 		m_RunAccel = 2.0f;//50
 		m_JumpAccel = 35.f;//10
-		m_MaxJump = 15.f;
+		m_MaxJump = 25.f;
 
 		m_Anims["Walk"] = rendMan->createSpriteSheet( 0,
 				Gosu::resourcePrefix() + L"Images/character2.png", 
@@ -227,9 +227,9 @@ void GalPlayer::init(character _char)
 		m_Speed = 6.0f; //Speed to walk
 		m_RunSpeed = 10.0f; // Speed to run
 		m_MaxSpeed = 10.0f; // Max velocity
-		m_RunAccel = 2.0f;//50
-		m_JumpAccel = 50.f;//10
-		m_MaxJump = 15.f;
+		m_RunAccel = 4.0f;//50
+		m_JumpAccel = 75.f;//10
+		m_MaxJump = 25.f;
 
 		m_Anims["Walk"] = rendMan->createSpriteSheet( 0,
 				Gosu::resourcePrefix() + L"Images/character.png", 
@@ -409,7 +409,7 @@ void GalPlayer::findGround()
 	//float arcspan = 1.f / nearest;
 	// we now have gravity
 	// could improve by pulling towards on large distance, and doing tangent on closer
-	m_Body->ApplyForce( 4.0f * m_Gravity, m_Position );
+	m_Body->ApplyForce( 6.0f * m_Gravity, m_Position );
 	setGravity(0.5f * m_Gravity);
 }
 

@@ -136,16 +136,7 @@ public:
 	friend class MachineGun;
 	friend class Cannon;
 protected:
-/*
-	struct bullet {
-		bool hasGrav;
-		b2Body *bod;
-		Sprite *sprite;
-	};
-	std::list<bullet> m_Bullets;
-	int m_shotTimer;
-	int m_shootRate;
-	*/
+
 	character m_Character;
 	b2Vec2 m_Position;
 
@@ -201,8 +192,6 @@ protected:
 	b2Vec2 m_Dir;
 	//End Data
 	
-
-	// something about lua bindings..
 };
 
 #endif

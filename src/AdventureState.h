@@ -81,7 +81,7 @@ private:
 	boost::scoped_ptr<AudioManager> m_audMan;
 	
 	// Scene stuff
-	GalPlayer *m_Player, *m_CharBill, *m_CharBob;
+	GalPlayer *m_Player;
 	b2Vec2 m_PlayerPos;
 	double m_Grav;
 	//std::list< PlanetObj* > m_Planets;
