@@ -59,6 +59,8 @@ int main(int argc, char* argv[])
 	// Input stuff!
 	//need to push this initialization crap into inputmanager
 	InputManager* iman = InputManager::getCurrentContext();
+	iman->initWith(json["ButtonMaps"]);
+	/*
 	for (int i = 0; i < json["ButtonMaps"].size(); ++i) {
 		str = json["ButtonMaps"][i].get("Type", "action").asString();
 		if (str == "action") {
@@ -110,6 +112,7 @@ int main(int argc, char* argv[])
 			continue;
 		}
 	}
+	*/
 
 	// Command line arguments
 	bool mapload = false;

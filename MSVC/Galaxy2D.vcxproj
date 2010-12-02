@@ -101,6 +101,7 @@
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\MainMenuState.cpp" />
     <ClCompile Include="..\src\Physics\contactListener.cpp" />
+    <ClCompile Include="..\src\Scene\AI.cpp" />
     <ClCompile Include="..\src\Scene\Floating.cpp" />
     <ClCompile Include="..\src\Scene\GalPlayer.cpp" />
     <ClCompile Include="..\src\Scene\PlanetObj.cpp" />
@@ -114,6 +115,7 @@
     <ClInclude Include="..\src\Physics\CollisionProcessing.h" />
     <ClInclude Include="..\src\Physics\ContactListener.h" />
     <ClInclude Include="..\src\Physics\QueryCallback.h" />
+    <ClInclude Include="..\src\Scene\AI.h" />
     <ClInclude Include="..\src\Scene\Floating.h" />
     <ClInclude Include="..\src\Scene\GalPlayer.h" />
     <ClInclude Include="..\src\Scene\PlanetObj.h" />

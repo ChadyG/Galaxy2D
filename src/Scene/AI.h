@@ -28,7 +28,7 @@
  OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <Scene/SceneObject.h>
+#include <MUGE.h>
 
 
 class AISimple : public Component
@@ -57,6 +57,9 @@ public:
 private:
 	b2Body *m_Body;
 	b2World *m_World;
+	Sprite *m_Sprite;
+	
+	bool m_moveLeft;
 };
 
 /// Builder for Trigger component

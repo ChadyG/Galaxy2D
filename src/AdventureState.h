@@ -73,7 +73,6 @@ private:
 
 	boost::scoped_ptr<SceneGraph> m_Graph;
 
-
 	Gosu::Color m_canvasColor;
 
 	Camera_Parallax m_Camera;

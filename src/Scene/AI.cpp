@@ -13,7 +13,7 @@
 #include "../Physics/QueryCallback.h"
 
 AISimple::AISimple(SceneObject *_obj)
-: Component(_obj)
+: Component(_obj), m_moveLeft(true)
 {
 }
 
@@ -23,6 +23,34 @@ void AISimple::encodeWith(Json::Value *_val)
 
 void AISimple::initWith(Json::Value _val)
 {
+	m_moveLeft = _val["moveLeft"].asBool();
+	m_World = SceneGraph::getCurrentContext()->getPhysics();
+
+	b2CircleShape body;
+	body.m_radius = 1.0f;
+	body.m_p = b2Vec2(0.0f, 0.0f);
+
+	b2FixtureDef fix;
+	fix.density = 0.75f;
+	fix.friction = 0.3f;
+	fix.restitution = 0.3f;
+	fix.filter.categoryBits = 0x0010;
+	fix.filter.maskBits = 0x0FFF;
+	fix.filter.groupIndex = 1;
+	fix.shape = &body;
+
+	b2BodyDef bDef;
+	bDef.userData = m_Obj;
+	bDef.type = b2_dynamicBody;
+	bDef.position.Set( (float32)_val["Position"][0u].asDouble(), (float32)_val["Position"][1u].asDouble() );
+	bDef.linearDamping = 0.5f;
+	bDef.angularDamping = 1.85f;
+	//bDef.fixedRotation = true;
+	m_Body = m_World->CreateBody( &bDef );
+	m_Body->CreateFixture( &fix );
+	
+	RenderManager* rendMan = RenderManager::getCurrentContext();
+	m_Sprite = rendMan->createSprite( 0, Gosu::resourcePrefix() + L"Images/baddy.png");
 }
 
 void AISimple::findGround() 
@@ -96,6 +124,22 @@ void AISimple::findGround()
 
 void AISimple::update() 
 {
+	findGround();
+	double roll = 10.f;
+	if (m_moveLeft)
+		roll = -roll;
+	m_Body->ApplyTorque(roll);
+
+	b2Vec2 pos = m_Body->GetPosition();
+	m_Sprite->setX(pos.x);
+	m_Sprite->setY(pos.y);
+	m_Sprite->setAngle(m_Body->GetAngle() * (180.0f / (float)Gosu::pi));
+
+	if (m_Obj->hasComponent("Transform")) {
+		TransformComponent* tc = (TransformComponent*)m_Obj->getComponent("Transform");
+		tc->setPosition((double)pos.x, (double)pos.y);
+		tc->setRotation( m_Body->GetAngle() * (180.0f / (float)Gosu::pi));
+	}
 }
 
 /// Physics callback

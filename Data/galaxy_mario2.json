@@ -227,16 +227,16 @@
 						"Rotation" : 0.0
 					},
 					"Physics" : {
-						"Type" : "Static",
-						"Position" : [ 7.0, -8.0],
-						"Rotation" : 0.0,
+						"type" : "Static",
+						"position" : [ 7.0, -8.0],
+						"angle" : 0.0,
 						"Shapes" : [
 							{
-								"Type" : "Rectangle",
-							"categoryBits" : 1,
+								"type" : "Rectangle",
+								"categoryBits" : 1,
 								"Width" : 3.0,
 								"Height" : 0.25,
-								"Position" : [ 0.0, -3.5],
+								"position" : [ 0.0, -3.5],
 								"density" : 0.0,
 								"friction" : 1.3,
 								"restitution" : 0.25
@@ -259,16 +259,16 @@
 						"Rotation" : 0.0
 					},
 					"Physics" : {
-						"Type" : "Static",
-						"Position" : [ 50.0, -8.0],
-						"Rotation" : 0.0,
+						"type" : "Static",
+						"position" : [ 50.0, -8.0],
+						"angle" : 0.0,
 						"Shapes" : [
 							{
-								"Type" : "Rectangle",
+								"type" : "Rectangle",
 								"categoryBits" : 1,
 								"Width" : 3.0,
 								"Height" : 0.1,
-								"Position" : [ 0.0, -3.65],
+								"position" : [ 0.0, -3.65],
 								"density" : 0.0,
 								"friction" : 1.3,
 								"restitution" : 0.25
@@ -291,16 +291,16 @@
 						"Rotation" : 0.0
 					},
 					"Physics" : {
-						"Type" : "Static",
-						"Position" : [ 55.0, -11.0],
-						"Rotation" : 0.0,
+						"type" : "Static",
+						"position" : [ 55.0, -11.0],
+						"angle" : 0.0,
 						"Shapes" : [
 							{
-								"Type" : "Rectangle",
+								"type" : "Rectangle",
 								"categoryBits" : 1,
 								"Width" : 3.0,
 								"Height" : 0.25,
-								"Position" : [ 0.0, -3.5],
+								"position" : [ 0.0, -3.5],
 								"density" : 0.0,
 								"friction" : 1.3,
 								"restitution" : 0.25
@@ -323,16 +323,16 @@
 						"Rotation" : 0.0
 					},
 					"Physics" : {
-						"Type" : "Static",
-						"Position" : [ 52.0, -13.0],
-						"Rotation" : 0.0,
+						"type" : "Static",
+						"position" : [ 52.0, -13.0],
+						"angle" : 0.0,
 						"Shapes" : [
 							{
-								"Type" : "Rectangle",
-							"categoryBits" : 1,
+								"type" : "Rectangle",
+								"categoryBits" : 1,
 								"Width" : 3.0,
 								"Height" : 0.25,
-								"Position" : [ 0.0, -3.5],
+								"position" : [ 0.0, -3.5],
 								"density" : 0.0,
 								"friction" : 1.3,
 								"restitution" : 0.25
@@ -361,15 +361,15 @@
 						"Rotation" : 0.0
 					},
 					"Physics" : {
-						"Type" : "Static",
-						"Position" : [ -25.0, 45.5],
-						"Rotation" : 0.0,
+						"type" : "Static",
+						"position" : [ -25.0, 45.5],
+						"angle" : 0.0,
 						"Shapes" : [
 							{
-							"Type" : "Circle",
+							"type" : "Circle",
 							"categoryBits" : 256,
 							"radius" : 25.6,
-							"Position" : [ 0.0, 0.0],
+							"position" : [ 0.0, 0.0],
 							"density" : 0.0,
 							"friction" : 1.3,
 							"restitution" : 0.25
@@ -395,16 +395,16 @@
 						"Rotation" : 0.0
 					},
 					"Physics" : {
-						"Type" : "Static",
-						"Position" : [ 0.0, 0.0],
-						"Rotation" : 0.0,
+						"type" : "Static",
+						"position" : [ 0.0, 0.0],
+						"angle" : 0.0,
 						"Shapes" : [
 							{
-								"Type" : "Rectangle",
+								"type" : "Rectangle",
 								"categoryBits" : 256,
 								"Width" : 27.2,
 								"Height" : 8.0,
-								"Position" : [ 0.0, 0.0],
+								"position" : [ 0.0, 0.0],
 								"density" : 0.0,
 								"friction" : 1.3,
 								"restitution" : 0.25
@@ -430,16 +430,16 @@
 						"Rotation" : 0.0
 					},
 					"Physics" : {
-						"Type" : "Static",
-						"Position" : [ 60.0, 0.0],
-						"Rotation" : 0.0,
+						"type" : "Static",
+						"position" : [ 60.0, 0.0],
+						"angle" : 0.0,
 						"Shapes" : [
 							{
-								"Type" : "Rectangle",
+								"type" : "Rectangle",
 								"categoryBits" : 256,
 								"Width" : 27.2,
 								"Height" : 8.0,
-								"Position" : [ 0.0, 0.0],
+								"position" : [ 0.0, 0.0],
 								"density" : 0.0,
 								"friction" : 1.3,
 								"restitution" : 0.25
@@ -462,16 +462,16 @@
 						"Rotation" : 0.0
 					},
 					"Physics" : {
-						"Type" : "Static",
-						"Position" : [ -20.0, -25.0],
-						"Rotation" : 0.0,
+						"type" : "Static",
+						"position" : [ -20.0, -25.0],
+						"angle" : 0.0,
 						"Shapes" : [
 							{
-							"Type" : "Rectangle",
+							"type" : "Rectangle",
 							"categoryBits" : 4096,
 							"Width" : 3.2,
 							"Height" : 3.2,
-							"Position" : [ 0.0, 0.0],
+							"position" : [ 0.0, 0.0],
 							"density" : 0.2,
 							"friction" : 1.3,
 							"restitution" : 0.25
@@ -494,20 +494,20 @@
 						"Rotation" : 0.0
 					},
 					"Physics" : {
-						"Type" : "Dynamic",
-						"Position" : [ -20.0, -15.0],
-						"Rotation" : 0.0,
+						"type" : "Dynamic",
+						"position" : [ -20.0, -15.0],
+						"angle" : 0.0,
 						"Shapes" : [
 							{
-							"Type" : "Polygon",
+							"type" : "Polygon",
 							"categoryBits" : 256,
 							"maskBits" : 61695,
-							"Vertices" : [
+							"vertices" : [
 								[-3.0, -3.0],
 								[3.0, -2.5],
 								[3.0, 2.5]
 							],
-							"Position" : [ 0.0, 0.0],
+							"position" : [ 0.0, 0.0],
 							"density" : 500.0,
 							"friction" : 1.3,
 							"restitution" : 0.25
@@ -533,21 +533,21 @@
 						"Rotation" : 0.0
 					},
 					"Physics" : {
-						"Type" : "Dynamic",
-						"Position" : [ -15.0, -25.0],
-						"Rotation" : 0.0,
+						"type" : "Dynamic",
+						"position" : [ -15.0, -25.0],
+						"angle" : 0.0,
 						"fixedRotation" : true,
 						"Shapes" : [
 							{
-							"Type" : "Polygon",
+							"type" : "Polygon",
 							"categoryBits" : 256,
 							"maskBits" : 61695,
-							"Vertices" : [
+							"vertices" : [
 								[-3.0, -3.0],
 								[3.0, -2.5],
 								[3.0, 2.5]
 							],
-							"Position" : [ 0.0, 0.0],
+							"position" : [ 0.0, 0.0],
 							"density" : 500.0,
 							"friction" : 1.3,
 							"restitution" : 0.25
@@ -567,14 +567,30 @@
 					}
 				}
 			]
+		},
+		{
+			"GroupName" : "AI",
+			"Children" : [
+				{
+					"Name" : "baddy1",
+					"Transform" : {
+						"Position" : [ -15.0, 15.0],
+						"Rotation" : 0.0
+					},
+					"AISimple" : {
+						"Position" : [ -15.0, 15.0],
+						"walkLeft" : false
+					}
+				}
+			]
 		}
 	], //Objects
 	"Joints" : [
 		{
-			"Type" : "Revolute",
+			"type" : "Revolute",
 			"ObjectA" : "triplanet",
 			"ObjectB" : "squareplanet",
-			"Position" : [ -20.0, -25.0],
+			"position" : [ -20.0, -25.0],
 			"enableMotor" : true,
 			"motorSpeed" : 0.25,
 			"maxMotorTorque" : 25000.0
