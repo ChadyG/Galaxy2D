@@ -1,0 +1,124 @@
+========================================
+Galaxy2D - Design Doc
+========================================
+
+1 Overview
+========================================
+  Part of a series of 2D games using Mario Galaxy like environment.  This is the 
+platformer variant of the series.  Similar to the template laid down with SMB3, with 
+various discrete levels split across worlds laid out in a tree structure.
+
+1.2 Vision Statement
+====================
+lol
+
+
+1.3 Branding Choices
+====================
+wtflol
+
+
+2 Core Gameplay
+========================================
+  Solid platformer controls
+  - jump (no walljumps)
+  - some temporary projectile weapons
+  - mario galaxy like gravity
+  - floating platforms (moving, rotation, etc.)
+
+2.1 Game Subsystems
+====================
+
+
+2.2 Player Avatar
+====================
+
+
+2.3 Controls
+====================
+keyboard
+
+wasd  - movement
+space - jump
+shift    - run
+jkl       - items
+i         - inventory
+
+esc    - escape (pause)
+enter  - select
+
+mouse - menu stuff
+
+2.4 Goals
+====================
+overall goal is to save hero's girlfriend from some unknown event
+
+each level you must make it to the end to collect some item (a memento of sorts)
+	-flowers?
+	-other ideas
+
+
+
+3 Environment
+========================================
+	- planet objects
+		have gravity
+		any shape
+	- moving platforms
+		have gravity
+		any shape
+		moving
+			component based
+			joint+motor based
+	- jump through platforms
+	- other obstacles 
+		loose
+		joints
+	
+
+
+4 Game Structure
+========================================
+
+
+4.1 Rewards
+====================
+
+
+4.2 Game States
+====================
+
+
+4.7 Overlays
+====================
+
+
+4.7.1 Main Menu
+==========
+
+4.7.2 HUD
+==========
+
+4.7.3 Pause
+==========
+
+
+4.8 Settings
+====================
+
+
+
+5 Audio
+========================================
+
+
+
+6 Stage Progression
+========================================
+
+
+
+7. Appendix
+========================================
+
+
