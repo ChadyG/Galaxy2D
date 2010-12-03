@@ -501,7 +501,6 @@
 							{
 							"type" : "Polygon",
 							"categoryBits" : 256,
-							"maskBits" : 61695,
 							"vertices" : [
 								[-3.0, -3.0],
 								[3.0, -2.5],
@@ -541,7 +540,6 @@
 							{
 							"type" : "Polygon",
 							"categoryBits" : 256,
-							"maskBits" : 61695,
 							"vertices" : [
 								[-3.0, -3.0],
 								[3.0, -2.5],

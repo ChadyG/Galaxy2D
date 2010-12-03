@@ -8,9 +8,22 @@ Galaxy2D - Design Doc
 platformer variant of the series.  Similar to the template laid down with SMB3, with 
 various discrete levels split across worlds laid out in a tree structure.
 
-1.2 Vision Statement
+1.2 Story Stuff
 ====================
-lol
+  Game follows event immediatly following a planet's destruction.  Of course this makes
+no sense, but it's a game so shuttup!  Our "hero" is talking with his girlfriend on the phone
+when something happens.  The call is cut off and he is thrown across the room.  Upon 
+waking, he realizes the planet has been blown to pieces.  He immediately sets out to 
+find his love and make sure she is ok.
+
+-digression time!-
+
+If this story sucks too much, we can discuss it.  I don't want to hammer it down the players'
+throats so anything we do should be balanced fairly well with the gameplay.  I'd rather 
+it not be too off the wall so it seems somewhat interesting, but not enough to take over the 
+game.  I do want to play around with telling a story through gameplay, with overarching goals
+lining up with story points.  To me, augmenting good gameplay with enough story to keep
+the player with some larger goal across levels makes it much more entertaining
 
 
 1.3 Branding Choices
@@ -28,13 +41,76 @@ wtflol
 
 2.1 Game Subsystems
 ====================
+ - physics
+ - movement
+ - whathaveyou
+
+2.1.1 Physics
+==========
+  To differentiate object types in the physics callbacks, certain category bits are reserved for the 
+different object types.  The following chart shows this.
+
+Object					categoryBits
+--------------------------------------------------
+innert						0x000F
+Player						0x00F0
+Planets						0x0F00
+non-blocking				0xF000
 
 
-2.2 Player Avatar
-====================
+  Certain objects have gravity and will attract the player.  These objects have a physics body with 
+categoryBits set to 0x0100, and a planet component which hold the gravity attribute.  The following
+is an example of a planet in the json file format:
+
+{
+	"Name" : "planetBig",
+	"Renderable" : {
+		"Type" : "Sprite",
+		"Layer" : 0,
+		"Image" : "Levels/Planet512.png",
+		"ColorMod" : [255, 255, 255, 255],
+		"xScale" : 1.0,
+		"yScale" : 1.0
+	},
+	"Transform" : {
+		"Position" : [ -25.0, 45.5],
+		"Rotation" : 0.0
+	},
+	"Physics" : {
+		"type" : "Static",
+		"position" : [ -25.0, 45.5],
+		"angle" : 0.0,
+		"Shapes" : [
+			{
+			"type" : "Circle",
+			"categoryBits" : 256,
+			"radius" : 25.6,
+			"position" : [ 0.0, 0.0],
+			"density" : 0.0,
+			"friction" : 1.3,
+			"restitution" : 0.25
+			}
+		]
+	},
+	"Planet" : {
+		"Gravity" : 15.0
+	}
+}
+
+Each planet has a render, transform, physics, and planet component.  The physics is left to 
+the default physics component to take advantage of the configuration possibilities.  
 
 
-2.3 Controls
+2.1.2 Movement
+==========
+  The player moves in the world as a circle that rolls to move.  This is the simplest way to negotiate the 
+type of environment that I could find.  
+
+2.1.3 WhatHaveYou
+==========
+
+
+2.2 Controls
 ====================
 keyboard
 
@@ -49,7 +125,7 @@ enter  - select
 
 mouse - menu stuff
 
-2.4 Goals
+2.3 Goals
 ====================
 overall goal is to save hero's girlfriend from some unknown event
 
