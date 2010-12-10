@@ -62,12 +62,9 @@ AdventureState::AdventureState( std::wstring _config )
 	m_Orientation = 0.0;
 	
 	//Meh
-	m_rendMan.reset();
-	m_audMan.reset();
 	m_World.reset();
 }
 
-//This should take a parameter for new player or existing
 void AdventureState::init()
 {	
 	m_Engine = Core::getCurrentContext();
@@ -75,14 +72,11 @@ void AdventureState::init()
 
 	//
 	//Create managers and register them
-	m_Graph.reset( new SceneGraph() );
-	m_rendMan.reset( new RenderManager() );
-	m_audMan.reset( new AudioManager() );
-	m_rendMan->setCamera( &m_Camera );
+	m_rendMan.setCamera( &m_Camera );
 
-	SceneGraph::setCurrentContext( m_Graph.get() );
-	RenderManager::setCurrentContext( m_rendMan.get() ); 
-	AudioManager::setCurrentContext( m_audMan.get() );
+	SceneGraph::setCurrentContext( &m_Graph );
+	RenderManager::setCurrentContext( &m_rendMan ); 
+	AudioManager::setCurrentContext( &m_audMan );
 	
 	// box2D stuff
 	b2Vec2 gravity( 0.0f, 0.0f);
@@ -91,7 +85,7 @@ void AdventureState::init()
 	m_World.reset( new b2World(gravity, do_sleep));
 	m_World->SetContactListener( &m_ContactListener );
 
-	m_Graph->setPhysics( m_World.get() );
+	m_Graph.setPhysics( m_World.get() );
 
 	m_VelIterations = 10;
 	m_PosIterations = 10;
@@ -113,11 +107,6 @@ void AdventureState::init()
 
 	//
 	//=====PlayerInit
-	//m_Player = new GalPlayer();
-	//m_Player->init();
-	//m_Player->setPhysics( m_PlayerPos.x, m_PlayerPos.y, m_World.get());
-	//m_Player->setLayer( 0 );
-
 	m_Player = new GalPlayer();
 	m_Player->init(GalPlayer::char_bill);
 	m_Player->setPhysics( m_PlayerPos.x, m_PlayerPos.y, m_World.get());
@@ -138,8 +127,8 @@ void AdventureState::init()
 	m_Scale = jVal.get("Scale", 1).asInt();
 	
 	// Configure render/audio manager for screen transformation
-	m_rendMan->setScreen( m_Width, m_Height, m_Scale );
-	m_audMan->setScreen( m_Width, m_Height, m_Scale );
+	m_rendMan.setScreen( m_Width, m_Height, m_Scale );
+	m_audMan.setScreen( m_Width, m_Height, m_Scale );
 	InputManager::getCurrentContext()->setScreen( m_Width, m_Height, m_Scale );
 
 	// Configure camera stuff
@@ -151,40 +140,23 @@ void AdventureState::init()
 	m_Focus[0] = m_PlayerPos.x;
 	m_Focus[1] = m_PlayerPos.y - 4.0;
 	
-	m_rendMan->setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot);
-	m_audMan->setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot);
+	m_rendMan.setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot);
+	m_audMan.setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot);
 	
 	// Set screen offset from world focus point
 	CameraTransform camtrans = m_Camera.worldToScreen(m_Focus[0], m_Focus[1], 1);
 	m_Offset[0] = camtrans.x;
 	m_Offset[1] = camtrans.y;
-
-	// Set up warp points
-	/*for (i = 0; i < jVal["Warps"].size(); ++i) {
-		WarpTrigger twarp;	
-	
-		twarp.trigger.setExtents( 
-			jVal["Warps"][i]["Position"].get(0u, 0.0).asDouble(),
-			jVal["Warps"][i]["Position"].get(1u, 0.0).asDouble(),
-			jVal["Warps"][i]["Extent"].get(0u, 1.0).asDouble(),
-			jVal["Warps"][i]["Extent"].get(1u, 1.0).asDouble());
-		twarp.level = jVal.get("Level", "default").asString();
-		
-		m_Warps.push_back( twarp );
-	}*/
 	
 	// Create all scene objects from file
-	m_Graph->loadFile( m_ConfigFile );
-
-	//Testing
-	//m_Graph->writeFile( L"loltest" );
+	m_Graph.loadFile( m_ConfigFile );
 	
 	//Pass off song creation/management to manager
 	//  this way anyone can pause the music if needed
-	m_audMan->createSong(
+	m_audMan.createSong(
 		Gosu::resourcePrefix() + L"Sound/" + Gosu::widen( jVal.get("Music", "song.mp3").asString()), 
 		"Background");
-	m_audMan->playSong("Background", true);
+	m_audMan.playSong("Background", true);
 }
 
 void AdventureState::cleanup()
@@ -197,7 +169,6 @@ void AdventureState::update()
 {
 	//
 	// Clear current contacts 
-	//  (IMPORTANT! Box2D sends EndContact on body deletion, I DO NOT WANT)
 	m_ContactListener.clear();
 	
 	// Step physics simulation
@@ -207,20 +178,10 @@ void AdventureState::update()
 	m_Player->update(true);
 	b2Vec2 m_PlayerPos = m_Player->getPosition();
 
-	m_audMan->doPlay();
-	m_rendMan->update();
+	m_audMan.doPlay();
+	m_rendMan.update();
 	InputManager* input = InputManager::getCurrentContext();
 
-/*
-	if (input->query("Play.UseMario") == InputManager::actnBegin) {
-		//m_Player->swapChar(Player::char_bill);
-		m_Player = m_CharBill;
-	}
-	if (input->query("Play.UseLuigi") == InputManager::actnBegin) {
-		//m_Player->swapChar(Player::char_bob);
-		m_Player = m_CharBob;
-	}
-*/
 	// Galaxy Camera stuff
 	b2Vec2 gravity = m_Player->getGravity();
 	
@@ -251,13 +212,13 @@ void AdventureState::update()
 	m_Offset[1] = m_Height - m_Focus[1]*m_Scale*m_Zoom - m_Height/2;
 
 	//All of these things need to know what we are looking at!
-	m_rendMan->setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot);
-	m_audMan->setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot);
+	m_rendMan.setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot);
+	m_audMan.setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot);
 	input->setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot); //only for mouse to world transform
 	
 	// Begin Scene object stuff
 	
-	m_Graph->update();
+	m_Graph.update();
 
 	//This trigger stuff is old and needs to be wrapped up somewhere in the engine
 	//b2AABB space;
@@ -334,7 +295,7 @@ void AdventureState::draw() const
 	
 	// Render all
 	//m_rendMan->setColor(m_colorMod);
-	m_rendMan->doRender();
+	m_rendMan.doRender();
 }
 
 void AdventureState::resume()

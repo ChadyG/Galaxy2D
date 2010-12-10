@@ -34,7 +34,7 @@ void AISimple::initWith(Json::Value _val)
 	fix.density = 0.75f;
 	fix.friction = 0.3f;
 	fix.restitution = 0.3f;
-	fix.filter.categoryBits = 0x0010;
+	fix.filter.categoryBits = 0x1000;
 	fix.filter.maskBits = 0x0FFF;
 	fix.filter.groupIndex = 1;
 	fix.shape = &body;

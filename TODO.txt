@@ -16,3 +16,17 @@ Galaxy2D - TODO list
     - Roaming : seek out player
     - other stuff
  - tighten movement
+ 
+ overworld json example
+ 
+ nodes : [
+	{
+		position : [ x, y],
+		image : "",
+		up : ref,
+		left : ref, 
+		right : ref,
+		down : ref,
+		condition : ""
+	}
+ ]

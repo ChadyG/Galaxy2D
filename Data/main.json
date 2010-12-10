@@ -24,6 +24,16 @@
 			"Type" : "action"
 		},
 		{
+			"Action" : "Menu.Left",
+			"Key" : "kbLeft",
+			"Type" : "action"
+		},
+		{
+			"Action" : "Menu.Right",
+			"Key" : "kbRight",
+			"Type" : "action"
+		},
+		{
 			"Action" : "Menu.Select",
 			"Keys" : ["kbEnter", "kbSpace", "kbReturn"],
 			"Type" : "action"
