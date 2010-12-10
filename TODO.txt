@@ -7,4 +7,12 @@ Galaxy2D - TODO list
  - Proper inventory
  - Level creation workflow
  - Enemy AI
+    - rename AISimple to AIRolling
+        determine how this affects player
+        does it just get in the way?
+        does it explode on contact?
+        does it hide when near and emit spikes?
+    - Flying : follow path (copy from floating platforms)
+    - Roaming : seek out player
+    - other stuff
  - tighten movement
