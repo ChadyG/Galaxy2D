@@ -1,10 +1,10 @@
 /*
-   AdventureState.h
+   LevelSelectState.h
    My Unnamed Game Engine
  
-   Created by Chad Godsey on 3/9/09.
+   Created by Chad Godsey on 12/9/10.
   
- Copyright 2009 BlitThis! studios.
+ Copyright 2010 BlitThis! studios.
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
@@ -31,26 +31,17 @@ OTHER DEALINGS IN THE SOFTWARE.
 #include <Gosu/Gosu.hpp>
 #include <MUGE.h>
 
-//#include "Scene/Scene.h"
-#include "Scene/GalPlayer.h"
-#include "Scene/PlanetObj.h"
-#include "Physics/ContactListener.h"
+struct LevelNode
+{
+	Sprite *image;
+	LevelNode *up, *left, *right, *down, *prev, *next;
+	std::string condition, name;
+};
 
-class Core;
-
-/**
- * State for Adventure gameplay
- * 
- * Must be able to load from a save, store to a save, and start from scratch.
- * If just starting, show opening sequence then load first level.
- * While playing, is able to swap out levels as player progresses.
- * Pause menu control can go here as well.  Allow player to save, quit and likely
- * open up some options to control.
- */
-class AdventureState : public GameState
+class LevelSelectState : public GameState
 {
 public:
-	AdventureState( std::wstring _config );
+	LevelSelectState( std::wstring _config );
 	
 	void init();
 	void cleanup();
@@ -66,35 +57,15 @@ public:
 private:
 	std::wstring m_ConfigFile;
 
-	SceneGraph m_Graph;
-
-	Gosu::Color m_canvasColor;
+	LevelNode *m_nodes;
 
 	Camera_Parallax m_Camera;
 	RenderManager m_rendMan;
-	AudioManager m_audMan;
+	InputManager m_inMan;
 	
-	// Scene stuff
-	GalPlayer *m_Player;
-	b2Vec2 m_PlayerPos;
-	double m_Grav;
-	
-	// Physics data
-	AdventureListener m_ContactListener;
-	boost::scoped_ptr<b2World> m_World;
-	float m_TimeStep;
-	int m_VelIterations, m_PosIterations;
-
-	//	Pixel transformation data
-	// Focus is the level coordinates of the center of the screen
-	// Zoom is a zooming factor for all layers
-	// Scale is the x/y scale to transform from level coordinates to screen
-	// Width and Height are screen size
 	double m_Focus[2], m_Offset[2], m_Extents[2];
 	double m_Zoom;
 	double m_Rot, m_Orientation;
 	int m_Scale;
 	int m_Width, m_Height;
-
-	//save stuff (sqlite?)
 };

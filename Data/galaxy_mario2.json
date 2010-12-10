@@ -1,16 +1,8 @@
 {
 	"CanvasColor" : [255, 107, 7, 105],
 	"Scale" : 10,
-	"Physics" : true,
 	"PlayerSpawn" : [ -20.0, -10.0],
 	"Music" : "Colugo-Fantastic_face.ogg",
-	"Warps" : [
-		{
-			"Position" : [-25.0, 15.0],
-			"Extent" : [1.0, 1.0],
-			"Level" : "galaxy_lvl2.json"
-		}
-	],
 	"Layers" : [
 		{
 			"ID" : "background",

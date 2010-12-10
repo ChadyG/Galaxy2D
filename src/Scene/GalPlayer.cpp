@@ -54,7 +54,9 @@ GalPlayer::GalPlayer()
 	m_RunSpeed = 8.0f; // Speed to run
 	m_MaxSpeed = 8.0f; // Max velocity
 	m_RunAccel = 2.0f;//50
+	m_JumpMove = 15.0f;
 	m_JumpAccel = 25.f;//10
+	m_MaxJumpAccel = 50.f;
 	m_MaxJump = 15.f;
 	m_MaxSpinVel = 20.f;
 	m_SpinAccel = 15.f;
@@ -473,7 +475,7 @@ void GalPlayer::update(bool _focus)
 			//ApplyImpulse to move toward desired velocity
 			m_Body->ApplyForce( push * m_GravMag * m_Mass * m_RunAccel * b2Vec2(-m_Gravity.y, m_Gravity.x), m_Position );
 		}else{
-			m_Body->ApplyForce( m_RunAccel * 15.f * b2Vec2(-m_Gravity.y, m_Gravity.x), m_Position );
+			m_Body->ApplyForce( m_RunAccel * m_JumpMove * b2Vec2(-m_Gravity.y, m_Gravity.x), m_Position );
 			if (!m_moveJump && m_Character == char_bob)
 				m_Body->ApplyTorque(-m_FlipAccel * m_RunSpeed);
 		}
@@ -498,7 +500,7 @@ void GalPlayer::update(bool _focus)
 			//ApplyImpulse to move toward desired velocity
 			m_Body->ApplyForce( push * m_GravMag * m_Mass * m_RunAccel * b2Vec2(m_Gravity.y, -m_Gravity.x), m_Position );
 		}else{
-			m_Body->ApplyForce( m_RunAccel * 15.f * b2Vec2(m_Gravity.y, -m_Gravity.x), m_Position );
+			m_Body->ApplyForce( m_RunAccel * m_JumpMove * b2Vec2(m_Gravity.y, -m_Gravity.x), m_Position );
 			if (!m_moveJump && m_Character == char_bob)
 				m_Body->ApplyTorque(m_FlipAccel * m_RunSpeed);
 		}
@@ -533,7 +535,7 @@ void GalPlayer::update(bool _focus)
 		if (m_onGround && b2Dot(vel, m_Gravity) > -0.5f) {
 			m_JumpOffVel = (std::min)( m_MaxJump, m_Body->GetLinearVelocity().Length());
 			float jumpMod = 1.0f + (m_JumpOffVel/m_RunSpeed)/2.0f;
-			float imp = (std::min)(m_JumpAccel * jumpMod, 50.f);
+			float imp = (std::min)(m_JumpAccel * jumpMod, m_MaxJumpAccel);
 			m_Body->ApplyLinearImpulse( imp * b2Vec2(-m_Gravity.x, -m_Gravity.y), m_Position );
 			m_jumpTimer = m_JumpTotTime;
 			AudioManager::getCurrentContext()->playStereoSample("Jump", m_Position.x, m_Position.y);

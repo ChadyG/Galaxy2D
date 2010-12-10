@@ -1,0 +1,54 @@
+{
+	"Nodes" : [
+		{
+			"Name" : "level1",
+			"Position" : [ -25, -8],
+			"Image" : "Levels/Planet64.png",
+			"Up" : "",
+			"Right" : "level2",
+			"Down" : "",
+			"Left" : "",
+			"Condition" : ""
+		},
+		{
+			"Name" : "level2",
+			"Position" : [ -15, -8],
+			"Image" : "Levels/Planet64.png",
+			"Up" : "",
+			"Right" : "level3",
+			"Down" : "",
+			"Left" : "level1",
+			"Condition" : "level1.complete"
+		},
+		{
+			"Name" : "level3",
+			"Position" : [ -5, -8],
+			"Image" : "Levels/Planet64.png",
+			"Up" : "",
+			"Right" : "level4",
+			"Down" : "",
+			"Left" : "level2",
+			"Condition" : "level2.complete"
+		},
+		{
+			"Name" : "level4",
+			"Position" : [ 5, -8],
+			"Image" : "Levels/Planet64.png",
+			"Up" : "",
+			"Right" : "",
+			"Down" : "level5",
+			"Left" : "level3",
+			"Condition" : "level3.complete"
+		},
+		{
+			"Name" : "level5",
+			"Position" : [ 5, 8],
+			"Image" : "Levels/Planet64.png",
+			"Up" : "level4",
+			"Right" : "",
+			"Down" : "",
+			"Left" : "",
+			"Condition" : "level4.complete"
+		}
+	]
+}

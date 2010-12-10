@@ -1,15 +1,11 @@
-========================================
-Galaxy2D - Design Doc
-========================================
+#Galaxy2D - Design Doc
 
-1 Overview
-========================================
+# 1 Overview
   Part of a series of 2D games using Mario Galaxy like environment.  This is the 
 platformer variant of the series.  Similar to the template laid down with SMB3, with 
 various discrete levels split across worlds laid out in a tree structure.
 
-1.2 Story Stuff
-====================
+## 1.2 Story Stuff
   Game follows event immediatly following a planet's destruction.  Of course this makes
 no sense, but it's a game so shuttup!  Our "hero" is talking with his girlfriend on the phone
 when something happens.  The call is cut off and he is thrown across the room.  Upon 
@@ -26,42 +22,40 @@ lining up with story points.  To me, augmenting good gameplay with enough story 
 the player with some larger goal across levels makes it much more entertaining
 
 
-1.3 Branding Choices
-====================
+## 1.3 Branding Choices
 wtflol
 
 
-2 Core Gameplay
-========================================
-  Solid platformer controls
-  - jump (no walljumps)
-  - some temporary projectile weapons
-  - mario galaxy like gravity
-  - floating platforms (moving, rotation, etc.)
+# 2 Core Gameplay
+* Solid platformer controls
+	* jump (no walljumps)
+	* some temporary projectile weapons
+	* mario galaxy like gravity
+	* floating platforms (moving, rotation, etc.)
 
-2.1 Game Subsystems
-====================
- - physics
- - movement
- - whathaveyou
+## 2.1 Game Subsystems
+ * physics
+ * movement
+ * whathaveyou
 
-2.1.1 Physics
-==========
+**2.1.1 Physics**
+
   To differentiate object types in the physics callbacks, certain category bits are reserved for the 
 different object types.  The following chart shows this.
 
+```text
 Object					categoryBits
 --------------------------------------------------
-innert						0x000F
-Player						0x00F0
-Planets						0x0F00
+innert					0x000F
+Player					0x00F0
+Planets					0x0F00
 non-blocking				0xF000
-
+```
 
   Certain objects have gravity and will attract the player.  These objects have a physics body with 
 categoryBits set to 0x0100, and a planet component which hold the gravity attribute.  The following
 is an example of a planet in the json file format:
-
+```javascript
 {
 	"Name" : "planetBig",
 	"Renderable" : {
@@ -96,105 +90,170 @@ is an example of a planet in the json file format:
 		"Gravity" : 15.0
 	}
 }
-
+```
 Each planet has a render, transform, physics, and planet component.  The physics is left to 
 the default physics component to take advantage of the configuration possibilities.  
 
 
-2.1.2 Movement
-==========
-  The player moves in the world as a circle that rolls to move.  This is the simplest way to negotiate the 
-type of environment that I could find.  
+**2.1.2 Movement**
 
-2.1.3 WhatHaveYou
-==========
+  The player moves in the world as a circle that rolls to move.  A slightly larger circle is used
+as a sensor object to help smooth out collision detection for movement along the surface of 
+planets.  When in contact with an object, the player is allowed to walk left or right as well as
+jump.  Holding the turbo button increases the maximum speed of the player, allowing them to 
+run.  When jumping, the initial velocity of the jump is attenuated by the current movement speed.
+Holding the jump button will also continue to propel the player upwards up to increase the height.
+Up and down are inferrred from the origin of gravity, which is computed by the nearest point on 
+the surface of planet objects. 
+
+  Movement allows for a number of modifyable attributes that can serve as powerups to gameplay.
+The following chart lists these attributes, their default values and purpose.
+
+**2.1.2.1 Power-Up values**
+
+```cpp
+	float m_Speed;			6.0f		// desired walk speed
+	float m_RunSpeed;		10.0f		// desired run speed
+	float m_MaxSpeed;		10.0f		// speed hard limit 
+	float m_RunAccel;		4.0f		// universal walk/run magnification
+	float m_JumpMove;		15.f		// modifier to movement while in air
+	float m_JumpAccel;		75.0f		// universal 
+	float m_MaxJumpAccel;		50.f;		// maximum 
+	float m_MaxJump;			25.f		// limit to run speed attenuation
+	int m_JumpTotTime;		25		// total time for jumping
+	float m_SpinAccel;			15.0f		// unused
+	float m_FlipAccel;			2.0f		// unused
+```
+
+**2.1.2.2 Jump equation**
+
+```cpp
+	// Compute attenuation from movement speed
+	m_JumpOffVel = (std::min)( m_MaxJump, m_Body->GetLinearVelocity().Length()); 
+	float jumpMod = 1.0f + (m_JumpOffVel/m_RunSpeed)/2.0f;
+	// compute impulse from values
+	float imp = (std::min)(m_JumpAccel * jumpMod, m_MaxJumpAccel);
+	// put it all together and orient to gravity
+	linear Impulse = imp * b2Vec2(-m_Gravity.x, -m_Gravity.y)
+```
 
 
-2.2 Controls
-====================
+**2.1.2.3 Move equation**
+
+```cpp
+	float push;
+	if (input->query("Play.Run") == InputManager::actnActive) 
+		push = (m_CurSpeed > m_RunSpeed) ? 0.f : (m_RunSpeed - m_CurSpeed);
+	else
+		push = (m_CurSpeed > m_Speed) ? 0.f : (m_Speed - m_CurSpeed);
+	push = Gosu::clamp(push, -m_MaxSpeed, m_MaxSpeed);
+	//ApplyImpulse to move toward desired velocity
+	m_Body->ApplyForce( push * m_GravMag * m_Mass * m_RunAccel * b2Vec2(-m_Gravity.y, m_Gravity.x), m_Position );
+```
+
+
+**2.1.2.4 Jump Movement**
+
+```cpp
+	m_Body->ApplyForce( m_RunAccel * m_JumpMove* b2Vec2(-m_Gravity.y, m_Gravity.x), m_Position );
+```
+
+
+**2.1.3 WhatHaveYou**
+
+
+
+## 2.2 Controls
 keyboard
 
-wasd  - movement
-space - jump
-shift    - run
-jkl       - items
-i         - inventory
+* wasd  - movement
+* space - jump
+* shift    - run
+* jkl       - items
+* i         - inventory
+* esc    - escape (pause)
+* enter  - select
+* mouse - menu stuff
 
-esc    - escape (pause)
-enter  - select
 
-mouse - menu stuff
-
-2.3 Goals
-====================
+## 2.3 Goals
 overall goal is to save hero's girlfriend from some unknown event
 
-each level you must make it to the end to collect some item (a memento of sorts)
-	-flowers?
-	-other ideas
+each level you must make it to the end to pursue the girlfriend
+along the way, you can find pictures left behind from the girlfriend (she is a hipster photographer)
+the pictures help solve puzzles etc.
 
 
 
-3 Environment
-========================================
-	- planet objects
-		have gravity
-		any shape
-	- moving platforms
-		have gravity
-		any shape
-		moving
-			component based
-			joint+motor based
-	- jump through platforms
-	- other obstacles 
-		loose
-		joints
+# 3 Environment
+* planet objects
+	* have gravity
+	* any shape
+* moving platforms
+	* have gravity
+	* any shape
+	* moving
+		* component based
+		* joint+motor based
+* jump through platforms
+* other obstacles 
+	* loose
+	* joints
 	
 
 
-4 Game Structure
-========================================
+## 4 Game Structure
 
 
-4.1 Rewards
-====================
+# 4.1 Rewards
+Long term powerups
+* refer to 2.1.2.1 for power up types on movement
+* health power-up
+* weapon power-up
+* inventory power-up
+
+# 4.2 Game States
+* title state
+* mainmenu state
+* play state
+	* world state
+	* adventure state
+
+Play state manages moving between world selection and level playing.  Inter-state message passing is done
+through the json data store on Core.  The following json illustrates the values to be used within a level to record
+progress.
+
+```javascript
+"LevelProgress" : {
+	"CheckPoint" : 1,
+	"PowerUps" : []
+}
+```
+Think of this as the stack where a function would leave its return value.  
 
 
-4.2 Game States
-====================
+# 4.7 Overlays
 
 
-4.7 Overlays
-====================
+**4.7.1 Main Menu**
+
+**4.7.2 HUD**
+
+**4.7.3 Pause**
 
 
-4.7.1 Main Menu
-==========
-
-4.7.2 HUD
-==========
-
-4.7.3 Pause
-==========
-
-
-4.8 Settings
-====================
+## 4.8 Settings
 
 
 
-5 Audio
-========================================
+# 5 Audio
 
 
 
-6 Stage Progression
-========================================
+# 6 Stage Progression
 
 
 
-7. Appendix
-========================================
+# 7. Appendix
 
 

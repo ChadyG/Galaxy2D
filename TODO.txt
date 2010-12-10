@@ -8,3 +8,17 @@ Galaxy2D - TODO list
  - Level creation workflow
  - Enemy AI
  - tighten movement
+ 
+ overworld json example
+ 
+ nodes : [
+	{
+		position : [ x, y],
+		image : "",
+		up : ref,
+		left : ref, 
+		right : ref,
+		down : ref,
+		condition : ""
+	}
+ ]

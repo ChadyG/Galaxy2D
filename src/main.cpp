@@ -34,6 +34,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 #include "TitleState.h"
 #include "AdventureState.h"
+#include "LevelSelectState.h"
 
 int main(int argc, char* argv[])
 {
@@ -57,69 +58,16 @@ int main(int argc, char* argv[])
 	win.setCurrentContext(&win);
 
 	// Input stuff!
-	//need to push this initialization crap into inputmanager
 	InputManager* iman = InputManager::getCurrentContext();
 	iman->initWith(json["ButtonMaps"]);
-	/*
-	for (int i = 0; i < json["ButtonMaps"].size(); ++i) {
-		str = json["ButtonMaps"][i].get("Type", "action").asString();
-		if (str == "action") {
-			str = json["ButtonMaps"][i].get("Action", "default").asString();
-			iman->createAction(str);
-			if (json["ButtonMaps"][i].isMember("Key")) {
-				//There is only one key to be bound
-				str2 = json["ButtonMaps"][i].get("Key", "kbA").asString();
-				iman->bindAction(str, InputManager::strToButton(str2));
-			}else{
-				//There are multiple keys to be bound
-				for (int j = 0; j < json["ButtonMaps"][i]["Keys"].size(); ++j) {
-					str2 = json["ButtonMaps"][i]["Keys"].get(j,"kbA").asString();
-					iman->bindAction(str, InputManager::strToButton(str2));
-				}
-			}
-			continue;
-		}
-		if (str == "chord") {
-			str = json["ButtonMaps"][i].get("Type", "action").asString();
-			iman->createChord(str);
-			if (json["ButtonMaps"][i].isMember("Key")) {
-				//There is only one key to be bound
-				str2 = json["ButtonMaps"][i].get("Key", "kbA").asString();
-				iman->addChord(str, InputManager::strToButton(str2));
-			}else{
-				//There are multiple keys to be bound
-				for (int j = 0; j < json["ButtonMaps"][i]["Keys"].size(); ++j) {
-					str2 = json["ButtonMaps"][i]["Keys"].get(j,"kbA").asString();
-					iman->addChord(str, InputManager::strToButton(str2));
-				}
-			}
-			continue;
-		}
-		if (str == "sequence") {
-			int t = json["ButtonMaps"][i].get("Threshold", 1).asInt();
-			iman->createSequence(str, t);
-			if (json["ButtonMaps"][i].isMember("Key")) {
-				//There is only one key to be bound
-				str2 = json["ButtonMaps"][i].get("Key", "kbA").asString();
-				iman->pushSequence(str, InputManager::strToButton(str2));
-			}else{
-				//There are multiple keys to be bound
-				for (int j = 0; j < json["ButtonMaps"][i]["Keys"].size(); ++j) {
-					str2 = json["ButtonMaps"][i]["Keys"].get(j,"kbA").asString();
-					iman->pushSequence(str, InputManager::strToButton(str2));
-				}
-			}
-			continue;
-		}
-	}
-	*/
 
 	// Command line arguments
 	bool mapload = false;
 	for (int i=0; i < argc; i++) {
 		std::string str(argv[i]);
 		if (strcmp(argv[i], "-map ") == 0 && i != argc) {
-			AdventureState *state = new AdventureState( Gosu::widen(std::string(argv[i+1])) );
+			LevelSelectState *state = new LevelSelectState( L"world1" );
+			//AdventureState *state = new AdventureState( Gosu::widen(std::string(argv[i+1])) );
 			win.pushState( state );
 			mapload = true;
 		}

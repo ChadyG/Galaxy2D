@@ -98,6 +98,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\AdventureState.cpp" />
     <ClCompile Include="..\src\Inventory\Weapon.cpp" />
+    <ClCompile Include="..\src\LevelSelectState.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\MainMenuState.cpp" />
     <ClCompile Include="..\src\Physics\contactListener.cpp" />
@@ -111,6 +112,7 @@
   <ItemGroup>
     <ClInclude Include="..\src\AdventureState.h" />
     <ClInclude Include="..\src\Inventory\Weapon.h" />
+    <ClInclude Include="..\src\LevelSelectState.h" />
     <ClInclude Include="..\src\MainMenuState.h" />
     <ClInclude Include="..\src\Physics\CollisionProcessing.h" />
     <ClInclude Include="..\src\Physics\ContactListener.h" />

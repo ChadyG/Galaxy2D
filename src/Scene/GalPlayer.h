@@ -71,13 +71,15 @@ class PlayerData
 	float m_RunSpeed;	// max run speed
 	float m_MaxSpeed;	// speed modifier limit 
 	float m_RunAccel;  // power-up mod
+	float m_JumpMove; // power-up mod
 	float m_JumpAccel;  // power-up mod (?)
+	float m_MaxJumpAccel; // power-up mod
 	float m_MaxJump;  // power-up mod
 	float m_MaxSpinVel;
 	float m_SpinAccel;  // power-up mod
-	float m_JumpOffVel;  // power-up mod
+	float m_JumpOffVel;  // current jump velocity from run speed
 	float m_FlipAccel;  // power-up mod
-	int m_JumpTotTime;
+	int m_JumpTotTime;  // total time for jumping
 	int m_numContacts;
 	int m_numGroundContacts;
 	
@@ -172,7 +174,9 @@ protected:
 	float m_RunSpeed;	// max run speed
 	float m_MaxSpeed;	// speed modifier limit
 	float m_RunAccel;
+	float m_JumpMove; // power-up mod
 	float m_JumpAccel;
+	float m_MaxJumpAccel; // power-up mod
 	float m_MaxJump;
 	float m_MaxSpinVel;
 	float m_SpinAccel;
