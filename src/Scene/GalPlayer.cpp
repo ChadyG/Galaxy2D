@@ -421,7 +421,7 @@ void GalPlayer::update(bool _focus)
 	m_Position = m_Body->GetWorldCenter();
 	findGround();
 
-	b2Vec2 mouse = input->getMouse();
+	CameraTransform mouse = input->getMouseWorld(0.0);
 	//==================================================
 	// Orientation correction
 

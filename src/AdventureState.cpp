@@ -43,7 +43,6 @@ AdventureState::AdventureState( std::wstring _config )
 	m_ConfigFile = _config;
 	m_Engine = Core::getCurrentContext();
 	
-	
 	m_Engine->getData()["test2"] = Json::Value(true);
 	
 	Json::StyledWriter writer;
@@ -71,8 +70,10 @@ void AdventureState::init()
 	m_Engine->showCursor( true );
 
 	//
-	//Create managers and register them
+	//Register camera to managers
 	m_rendMan.setCamera( &m_Camera );
+	m_audMan.setCamera( &m_Camera );
+	InputManager::getCurrentContext()->setCamera( &m_Camera );
 
 	SceneGraph::setCurrentContext( &m_Graph );
 	RenderManager::setCurrentContext( &m_rendMan ); 
@@ -111,7 +112,6 @@ void AdventureState::init()
 	m_Player->init(GalPlayer::char_bill);
 	m_Player->setPhysics( m_PlayerPos.x, m_PlayerPos.y, m_World.get());
 	m_Player->setLayer( 0 );
-	
 	//=====
 	//
 
@@ -126,10 +126,9 @@ void AdventureState::init()
 	// Coordinate transform stuff for world -> screen
 	m_Scale = jVal.get("Scale", 1).asInt();
 	
-	// Configure render/audio manager for screen transformation
-	m_rendMan.setScreen( m_Width, m_Height, m_Scale );
-	m_audMan.setScreen( m_Width, m_Height, m_Scale );
-	InputManager::getCurrentContext()->setScreen( m_Width, m_Height, m_Scale );
+	// Configure camera for screen transformation
+	m_Camera.setExtents( m_Width, m_Height);
+	m_Camera.setScale( m_Scale );
 
 	// Configure camera stuff
 	// Set up layer scales
@@ -141,7 +140,6 @@ void AdventureState::init()
 	m_Focus[1] = m_PlayerPos.y - 4.0;
 	
 	m_rendMan.setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot);
-	m_audMan.setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot);
 	
 	// Set screen offset from world focus point
 	CameraTransform camtrans = m_Camera.worldToScreen(m_Focus[0], m_Focus[1], 1);
@@ -178,7 +176,7 @@ void AdventureState::update()
 	m_Player->update(true);
 	b2Vec2 m_PlayerPos = m_Player->getPosition();
 
-	m_audMan.doPlay();
+	m_audMan.update();
 	m_rendMan.update();
 	InputManager* input = InputManager::getCurrentContext();
 
@@ -211,11 +209,9 @@ void AdventureState::update()
 	m_Offset[0] = m_Focus[0]*m_Scale*m_Zoom - m_Width/2;
 	m_Offset[1] = m_Height - m_Focus[1]*m_Scale*m_Zoom - m_Height/2;
 
-	//All of these things need to know what we are looking at!
+	//shortcut camera parameter setting
 	m_rendMan.setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot);
-	m_audMan.setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot);
-	input->setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot); //only for mouse to world transform
-	
+
 	// Begin Scene object stuff
 	
 	m_Graph.update();
