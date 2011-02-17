@@ -49,6 +49,14 @@ void Cannon::onFire()
 		//shoot
 		m_shotTimer = m_shootRate;
 
+		b2BodyDef bDef;
+		bDef.userData = this;
+		bDef.type = b2_dynamicBody;
+		bDef.position.Set( m_Player->m_Position.x + 2.0 * m_Player->m_Dir.x, m_Player->m_Position.y + 2.0 * m_Player->m_Dir.y );
+		bDef.angle = Gosu::angle(0.0, 0.0, m_Player->m_Dir.x, m_Player->m_Dir.y) * ((float)Gosu::pi / 180.f);
+
+		b2Body *bod = m_Player->m_World->CreateBody( &bDef );
+
 		b2CircleShape buleet;
 		buleet.m_radius = 0.25f;
 
@@ -60,13 +68,6 @@ void Cannon::onFire()
 		bfix.filter.maskBits = 0xFF0F;
 		bfix.shape = &buleet;
 
-		b2BodyDef bDef;
-		bDef.userData = this;
-		bDef.type = b2_dynamicBody;
-		bDef.position.Set( m_Player->m_Position.x + 2.0 * m_Player->m_Dir.x, m_Player->m_Position.y + 2.0 * m_Player->m_Dir.y );
-		bDef.angle = Gosu::angle(0.0, 0.0, m_Player->m_Dir.x, m_Player->m_Dir.y) * ((float)Gosu::pi / 180.f);
-
-		b2Body *bod = m_Player->m_World->CreateBody( &bDef );
 		bod->CreateFixture( &bfix );
 		
 		Projectile *nbull = new Projectile(true);
@@ -168,7 +169,7 @@ void MachineGun::onFire()
 		sprite->setY(m_Player->m_Position.y + 2.0 * m_Player->m_Dir.y);
 		nbull->setSprite( sprite);
 
-		bod->ApplyForce(500.f * m_Player->m_Dir, bod->GetWorldCenter());
+		bod->ApplyForce(800.f * m_Player->m_Dir, bod->GetWorldCenter());
 
 		m_Bullets.push_back(nbull);
 	}

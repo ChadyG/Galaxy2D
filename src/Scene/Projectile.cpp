@@ -160,7 +160,8 @@ void Projectile::findGround()
 	//float arcspan = 1.f / nearest;
 	// we now have gravity
 	// could improve by pulling towards on large distance, and doing tangent on closer
-	//FIXME: somehow this is causing the crashing
+	if (!Gravity.IsValid()) 
+		Gravity.SetZero();
 	m_Body->ApplyForce( Gravity, pos );
 }
 

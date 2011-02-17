@@ -243,7 +243,21 @@ void GalPlayer::init(character _char)
 				24,
 				32,
 				20);
-
+		/*
+		m_Anims["Walk"] = rendMan->createSpriteSheet( 0,
+				Gosu::resourcePrefix() + L"Images/BoxManWalk_Right.png", 
+				128,//24,
+				96,//32,
+				50);
+		m_Anims["WalkLeft"] = rendMan->createSpriteSheet( 0,
+				Gosu::resourcePrefix() + L"Images/BoxManWalk_Left.png", 
+				128,//24,
+				96,//32,,
+				50);
+		
+		m_Anims["Walk"]->setScaling(0.34, 0.34);
+		m_Anims["WalkLeft"]->setScaling(0.34, 0.34);
+		*/
 		m_Message = NULL;//rendMan->createMessage(L"I must help these people, for science!", m_Position.x, m_Position.y, true);
 	}
 	m_Anims["Walk"]->setVisible(true);
@@ -411,6 +425,8 @@ void GalPlayer::findGround()
 	//float arcspan = 1.f / nearest;
 	// we now have gravity
 	// could improve by pulling towards on large distance, and doing tangent on closer
+	if (!m_Gravity.IsValid()) 
+		m_Gravity.SetZero();
 	m_Body->ApplyForce( 6.0f * m_Gravity, m_Position );
 	setGravity(0.5f * m_Gravity);
 }

@@ -29,6 +29,7 @@ OTHER DEALINGS IN THE SOFTWARE.
  */
 
 #include "LevelSelectState.h"
+#include "AdventureState.h"
 
 LevelSelectState::LevelSelectState( std::wstring _config )
 {
@@ -36,6 +37,9 @@ LevelSelectState::LevelSelectState( std::wstring _config )
 	m_Engine = Core::getCurrentContext();
 	
 	m_nodes = NULL;
+	m_curNode = NULL;
+
+	m_selectWorld = true;
 
 	//Render settings
 	m_Width = m_Engine->graphics().width();
@@ -49,6 +53,7 @@ LevelSelectState::LevelSelectState( std::wstring _config )
 void LevelSelectState::init()
 {
 	m_Camera.addLayer(0, 1.0);
+	m_Camera.addLayer(1, 1.0);
 	m_rendMan.setCamera( &m_Camera );
 	RenderManager::setCurrentContext( &m_rendMan ); 
 
@@ -78,11 +83,15 @@ void LevelSelectState::init()
 		node->left = NULL;
 		node->right = NULL;
 
+		node->open = false;
+
 		nodemap[node->name] = node;
 		if (m_nodes) m_nodes->prev = node;
 		node->next = m_nodes;
 		node->prev = NULL;
 		m_nodes = node;
+
+		if (m_curNode == NULL) m_curNode = node;
 	}
 
 	//loop again for connections
@@ -93,6 +102,18 @@ void LevelSelectState::init()
 		node->left = nodemap[jVal["Nodes"][i].get("Left", "").asString()];
 		node->right = nodemap[jVal["Nodes"][i].get("Right", "").asString()];
 	}
+
+	m_Engine->getData()["level2.complete"] = false;
+	checkFlags();
+
+	//Player image for current position
+	m_PlayerAnim = m_rendMan.createSpriteSheet( 1,
+		Gosu::resourcePrefix() + L"Images/character.png", 
+		24,
+		32,
+		20);
+	m_PlayerAnim->setX(m_curNode->image->posX());
+	m_PlayerAnim->setY(m_curNode->image->posY());
 }
 
 void LevelSelectState::cleanup()
@@ -106,7 +127,30 @@ void LevelSelectState::cleanup()
 
 void LevelSelectState::update()
 {
+	m_rendMan.update();
+	InputManager* input = InputManager::getCurrentContext();
 	
+	if (input->query("Menu.Up") == InputManager::actnBegin && m_curNode->up && m_curNode->up->open) {
+		m_curNode = m_curNode->up;
+	}
+	if (input->query("Menu.Down") == InputManager::actnBegin && m_curNode->down && m_curNode->down->open) {
+		m_curNode = m_curNode->down;
+	}
+	if (input->query("Menu.Left") == InputManager::actnBegin && m_curNode->left && m_curNode->left->open) {
+		m_curNode = m_curNode->left;
+	}
+	if (input->query("Menu.Right") == InputManager::actnBegin && m_curNode->right && m_curNode->right->open) {
+		m_curNode = m_curNode->right;
+	}
+
+	if (input->query("Menu.Select") == InputManager::actnBegin) {
+		//Load level
+		AdventureState *state = new AdventureState( Gosu::widen(m_curNode->name) );
+		m_Engine->pushState( state );
+	}
+	
+	m_PlayerAnim->setX(m_curNode->image->posX());
+	m_PlayerAnim->setY(m_curNode->image->posY());
 }
 
 void LevelSelectState::draw() const
@@ -127,4 +171,20 @@ void LevelSelectState::resume()
 void LevelSelectState::pause()
 {
 	
+}
+
+void LevelSelectState::checkFlags()
+{
+	LevelNode *node = m_nodes;
+	while (node) {
+		node->open = m_Engine->getData().get(node->condition,true).asBool();
+		//Darken unavailable nodes
+		//do this via sprite sheets later with desaturated variant
+		if (node->open) {
+			node->image->setColorMod(Gosu::Color::WHITE);
+		}else{
+			node->image->setColorMod(0xFFAAAAAA);
+		}
+		node = node->next;
+	}
 }

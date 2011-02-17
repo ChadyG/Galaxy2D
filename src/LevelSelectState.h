@@ -35,8 +35,16 @@ struct LevelNode
 {
 	Sprite *image;
 	LevelNode *up, *left, *right, *down, *prev, *next;
+	bool open;
 	std::string condition, name;
 };
+
+/*
+* Two levels:
+*	World select
+*	Level select
+*
+*/
 
 class LevelSelectState : public GameState
 {
@@ -53,16 +61,26 @@ public:
 	void draw() const;
 	
 	void save();
+
+	void chooseWorld();
+	void chooseLevel();
 	
 private:
+
+	void checkFlags();
+
 	std::wstring m_ConfigFile;
 
 	LevelNode *m_nodes;
+	LevelNode *m_curNode;
+	SpriteSheet* m_PlayerAnim;
 
 	Camera_Parallax m_Camera;
 	RenderManager m_rendMan;
 	InputManager m_inMan;
 	
+	bool m_selectWorld;
+
 	double m_Focus[2], m_Offset[2], m_Extents[2];
 	double m_Zoom;
 	double m_Rot, m_Orientation;

@@ -197,24 +197,29 @@ void AdventureState::update()
 	// end Galaxy
 	
 	//zoom based on movement speed
-	float zoom = 0.5 + (20.0 - m_Player->getSpeed())/20.0;
+	float zoom = 1.0 + (20.0 - m_Player->getSpeed())/20.0;
 	m_Zoom += (zoom - m_Zoom)/100.0;
-	m_Zoom = Gosu::clamp(m_Zoom, 0.95, 1.25);
+	m_Zoom = Gosu::clamp(m_Zoom, 1.45, 1.75);
 
 	// Focus camera on player
-	m_Focus[0] = m_PlayerPos.x;
-	m_Focus[1] = m_PlayerPos.y - 2.0;
+	m_Focus[0] += (m_PlayerPos.x - m_Focus[0])/50.0;
+	m_Focus[1] += (m_PlayerPos.y - m_Focus[1])/50.0;
 	
 	// Set screen offset from world focus point
 	m_Offset[0] = m_Focus[0]*m_Scale*m_Zoom - m_Width/2;
 	m_Offset[1] = m_Height - m_Focus[1]*m_Scale*m_Zoom - m_Height/2;
 
 	//shortcut camera parameter setting
-	m_rendMan.setCamera( m_Focus[0], m_Focus[1], m_Zoom, m_Rot);
+	m_rendMan.setCamera( m_Focus[0], m_Focus[1], m_Zoom, 0.0);//m_Rot);
 
 	// Begin Scene object stuff
 	
 	m_Graph.update();
+
+	if (input->query("Cheat.Reload") == InputManager::actnBegin) {
+		//Quit level
+		m_Engine->popState();
+	}
 
 	//This trigger stuff is old and needs to be wrapped up somewhere in the engine
 	//b2AABB space;

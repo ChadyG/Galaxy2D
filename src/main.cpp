@@ -60,15 +60,16 @@ int main(int argc, char* argv[])
 	// Input stuff!
 	InputManager* iman = InputManager::getCurrentContext();
 	iman->initWith(json["ButtonMaps"]);
-
+	
 	// Command line arguments
 	bool mapload = false;
 	for (int i=0; i < argc; i++) {
 		std::string str(argv[i]);
 		if (strcmp(argv[i], "-map ") == 0 && i != argc) {
-			//LevelSelectState *state = new LevelSelectState( L"world1" );
-			AdventureState *state = new AdventureState( Gosu::widen(std::string(argv[i+1])) );
-			win.pushState( state );
+			LevelSelectState *lstate = new LevelSelectState( L"world1" );
+			//AdventureState *state = new AdventureState( Gosu::widen(std::string(argv[i+1])) );
+			win.pushState( lstate );
+			//win.pushState( state );
 			mapload = true;
 		}
 	}
