@@ -3,7 +3,7 @@
 *  Galaxy 2D Platformer
 *
 *  Created by Chad on 1/9/08.
-*  Copyright 2009 Mizzou Game Design. All rights reserved.
+*  Copyright 2009 BlitThis! All rights reserved.
 *
 */
  

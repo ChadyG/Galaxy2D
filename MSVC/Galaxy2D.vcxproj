@@ -105,6 +105,7 @@
     <ClCompile Include="..\src\Scene\AI.cpp" />
     <ClCompile Include="..\src\Scene\Floating.cpp" />
     <ClCompile Include="..\src\Scene\GalPlayer.cpp" />
+    <ClCompile Include="..\src\Scene\Hazard.cpp" />
     <ClCompile Include="..\src\Scene\PlanetObj.cpp" />
     <ClCompile Include="..\src\Scene\Projectile.cpp" />
     <ClCompile Include="..\src\TitleState.cpp" />
@@ -120,6 +121,7 @@
     <ClInclude Include="..\src\Scene\AI.h" />
     <ClInclude Include="..\src\Scene\Floating.h" />
     <ClInclude Include="..\src\Scene\GalPlayer.h" />
+    <ClInclude Include="..\src\Scene\Hazard.h" />
     <ClInclude Include="..\src\Scene\PlanetObj.h" />
     <ClInclude Include="..\src\Scene\Projectile.h" />
     <ClInclude Include="..\src\TitleState.h" />

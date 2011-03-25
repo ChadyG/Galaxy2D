@@ -34,6 +34,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 #include "PlanetObj.h"
 #include "../Inventory/Weapon.h"
 #include "../Physics/QueryCallback.h"
+#include "boost/lexical_cast.hpp"
 
 GalPlayer::GalPlayer()
 {
@@ -45,6 +46,8 @@ GalPlayer::GalPlayer()
 	m_jumpTimer = 0;
 	m_SpeedSum = 1.f;
 	m_TickAvg = 10;
+
+	m_Health = 10.0;
 
 	m_Ang = 0.0;
 	m_FaceRight = true;
@@ -360,7 +363,21 @@ void GalPlayer::onColFinish(b2Fixture *_fix, SceneObject *_other, b2Manifold _ma
 
 void GalPlayer::onMessage(std::string _message)
 {
+	//should I use string parsing and allow parameter passing? "onHurt(5)"
+	unsigned int pIndex = _message.find("(", 0);
+	unsigned int param = 0;
 
+	if(pIndex != std::string::npos) {
+		param = boost::lexical_cast< int >(_message.substr(pIndex + 1, 
+			_message.find(")", pIndex) - pIndex - 1));
+		_message = _message.substr(0, pIndex);
+	}
+
+	if (_message == "onHurt") {
+		m_Health -= param;
+		m_hurtTimer = 25;
+		InputManager::getCurrentContext()->disable();
+	}
 }
 
 void GalPlayer::findGround() 
@@ -586,6 +603,25 @@ void GalPlayer::update(bool _focus)
 	if (input->query("Play.SecondaryFire") == InputManager::actnActive && _focus) {
 		//shoot the other one!
 		m_SecondaryWeapon->onFire();
+	}
+
+
+	//==================================================
+	// Start Hurt
+
+	if (m_hurtTimer >= 0) {
+		m_hurtTimer--;
+		if (m_hurtTimer%4==0) {
+			m_AnimState->setColorMod(0xff999999);
+		}else{
+			m_AnimState->setColorMod(0xffffffff);
+		}
+	}
+	if (m_hurtTimer == 0 ) {
+		m_State = State::Idle;
+		m_hurtTimer = 0;
+		input->enable();
+		m_AnimState->setColorMod(0xffffffff);
 	}
 
 	//==================================================

@@ -210,6 +210,7 @@ void Projectile::update()
 					SceneObject *obj = (SceneObject*)(*it)->GetBody()->GetUserData();
 					if (obj != NULL) {
 						obj->onMessage("explode");
+						obj->onMessage("onHurt(5)");
 					}
 					b2Vec2 d = (*it)->GetBody()->GetWorldCenter() - m_Position;
 					float pow = m_Power*Gosu::clamp((m_Power - d.Length())/m_Power, 0.f, 1.f);

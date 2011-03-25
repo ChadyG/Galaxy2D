@@ -139,6 +139,15 @@ public:
 	friend class Cannon;
 protected:
 
+	enum State {
+		Idle = 0,
+		Walk,
+		Jump,
+		Hurt
+	};
+
+	State m_State;
+
 	character m_Character;
 	b2Vec2 m_Position;
 
@@ -162,10 +171,13 @@ protected:
 	bool m_touching;
 	bool m_onGround;
 	int m_jumpTimer;
+	int m_hurtTimer;
 	bool m_moveJump;
 
 	float m_SpeedSum;
 	int m_TickAvg;
+
+	double m_Health;
 
 	float m_Mass;
 	float m_CurSpeed;	//current Speed
