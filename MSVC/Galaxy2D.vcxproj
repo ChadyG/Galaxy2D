@@ -41,10 +41,12 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)\..\</OutDir>
     <TargetName>$(ProjectName)_d</TargetName>
+    <IncludePath>C:\Libraries\boost_1_40_0;C:\Libraries\Box2D_v2.1.2\Box2D;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)\..\</OutDir>
+    <IncludePath>C:\Libraries\boost_1_40_0;C:\Libraries\Box2D_v2.1.2\Box2D;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
