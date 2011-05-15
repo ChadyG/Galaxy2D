@@ -67,9 +67,9 @@ int main(int argc, char* argv[])
 		std::string str(argv[i]);
 		if (strcmp(argv[i], "-map ") == 0 && i != argc) {
 			LevelSelectState *lstate = new LevelSelectState( L"world1" );
-			//AdventureState *state = new AdventureState( Gosu::widen(std::string(argv[i+1])) );
-			win.pushState( lstate );
-			//win.pushState( state );
+			AdventureState *state = new AdventureState( Gosu::widen(std::string(argv[i+1])) );
+			//win.pushState( lstate );
+			win.pushState( state );
 			mapload = true;
 		}
 	}

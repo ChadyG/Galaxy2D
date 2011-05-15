@@ -168,7 +168,7 @@ void GalPlayer::setPhysics( double _x, double _y, b2World* _world)
 
 		// Outer sensor
 		b2CircleShape outer;
-		outer.m_radius = 1.5f;
+		outer.m_radius = 1.75f;
 		outer.m_p = b2Vec2(0.0f, 0.0f);
 
 		b2FixtureDef ofix;
@@ -547,8 +547,12 @@ void GalPlayer::update(bool _focus)
 	//Facing direction stuff
 	//m_Dir.Set( mouse.x - m_Position.x, mouse.y - m_Position.y);
 	//m_Dir.Normalize();
+	//double joyX, joyY;
+	//joyX = Core::getCurrentContext()->input().joyX();
+	//joyY = Core::getCurrentContext()->input().joyY();
 	double dAng = Gosu::clamp(
 		Gosu::angle( mouse.x, mouse.y, m_Position.x, m_Position.y),
+		//Gosu::angle( joyX, joyY, 0.0, 0.0),
 		10.0, 350.0);
 	m_Dir.Set(-Gosu::offsetX(dAng, 1.0),
 			  -Gosu::offsetY(dAng, 1.0));

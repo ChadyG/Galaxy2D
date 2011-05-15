@@ -15,27 +15,27 @@
 		},
 		{
 			"Action" : "Menu.Up",
-			"Key" : "kbUp",
+			"Keys" : ["kbUp","gpUp"],
 			"Type" : "action"
 		},
 		{
 			"Action" : "Menu.Down",
-			"Key" : "kbDown",
+			"Keys" : ["kbDown","gpDown"],
 			"Type" : "action"
 		},
 		{
 			"Action" : "Menu.Left",
-			"Key" : "kbLeft",
+			"Keys" : ["kbLeft","gpLeft"],
 			"Type" : "action"
 		},
 		{
 			"Action" : "Menu.Right",
-			"Key" : "kbRight",
+			"Keys" : ["kbRight","gpRight"],
 			"Type" : "action"
 		},
 		{
 			"Action" : "Menu.Select",
-			"Keys" : ["kbEnter", "kbSpace", "kbReturn"],
+			"Keys" : ["kbEnter", "kbSpace", "kbReturn","gpButton0"],
 			"Type" : "action"
 		},
 		{
@@ -45,32 +45,32 @@
 		},
 		{
 			"Action" : "Play.MoveRight",
-			"Key" : "kbD",
+			"Keys" : ["kbD","gpRight"],
 			"Type" : "action"
 		},
 		{
 			"Action" : "Play.MoveLeft",
-			"Key" : "kbA",
+			"Keys" : ["kbA","gpLeft"],
 			"Type" : "action"
 		},
 		{
 			"Action" : "Play.Run",
-			"Key" : "kbLeftShift",
+			"Keys" : ["kbLeftShift","gpButton2"],
 			"Type" : "action"
 		},
 		{
 			"Action" : "Play.Jump",
-			"Key" : "kbSpace",
+			"Keys" : ["kbSpace","gpButton0"],
 			"Type" : "action"
 		},
 		{
 			"Action" : "Play.Fire",
-			"Key" : "msLeft",
+			"Keys" : ["msLeft","gpButton5"],
 			"Type" : "action"
 		},
 		{
 			"Action" : "Play.Swap",
-			"Key" : "kbQ",
+			"Keys" : ["kbQ","gpButton4"],
 			"Type" : "action"
 		},
 		{
