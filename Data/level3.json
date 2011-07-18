@@ -1,0 +1,509 @@
+{
+    "CanvasColor": [
+        255,
+        107,
+        7,
+        105
+    ],
+    "Scale": 10,
+    "PlayerSpawn": [
+        -20,
+        -10
+    ],
+    "Music": "Colugo-Fantastic_face.ogg",
+    "ContentRootFolder": "C:/Users/Chad/Projects/Galaxy2D/Images",
+    "Layers": [
+        {
+            "ID": "background",
+            "Scale": 10,
+            "Layer": -4
+        },
+        {
+            "ID": "midground",
+            "Scale": 5,
+            "Layer": -3
+        },
+        {
+            "ID": "nearmidground",
+            "Scale": 2,
+            "Layer": -2
+        },
+        {
+            "ID": "behind_player",
+            "Scale": 1,
+            "Layer": -1
+        },
+        {
+            "ID": "planets",
+            "Scale": 1,
+            "Layer": 0
+        }
+    ],
+    "Objects": [
+        {
+            "GroupName": "Default",
+            "Children": [
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": -4,
+                        "Image": "Levels/cloud_1.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            0,
+                            0
+                        ],
+                        "Rotation": 0
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": -4,
+                        "Image": "Levels/cloud_2.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            60,
+                            -5
+                        ],
+                        "Rotation": 0
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": -3,
+                        "Image": "Levels/cloud_13.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            -20,
+                            15
+                        ],
+                        "Rotation": 0
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": -3,
+                        "Image": "Levels/cloud_14.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            0,
+                            -18
+                        ],
+                        "Rotation": 0
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": -3,
+                        "Image": "Levels/cloud_15.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            15,
+                            25
+                        ],
+                        "Rotation": 0
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": -3,
+                        "Image": "Levels/cloud_13.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            20,
+                            15
+                        ],
+                        "Rotation": 45
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": -3,
+                        "Image": "Levels/cloud_14.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            35,
+                            -20
+                        ],
+                        "Rotation": 90
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": -3,
+                        "Image": "Levels/cloud_15.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            45,
+                            25
+                        ],
+                        "Rotation": 20
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": -2,
+                        "Image": "Levels/cloud_11.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 0.8,
+                        "yScale": 0.8
+                    },
+                    "Transform": {
+                        "Position": [
+                            -20,
+                            15
+                        ],
+                        "Rotation": 60
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": -2,
+                        "Image": "Levels/cloud_9.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 0.8,
+                        "yScale": 0.8
+                    },
+                    "Transform": {
+                        "Position": [
+                            40,
+                            -25
+                        ],
+                        "Rotation": 0
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": -1,
+                        "Image": "Levels/Cliff.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 0.8,
+                        "yScale": 0.8
+                    },
+                    "Transform": {
+                        "Position": [
+                            7,
+                            -8
+                        ],
+                        "Rotation": 0
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": -1,
+                        "Image": "Levels/Cliff.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 0.8,
+                        "yScale": 0.8
+                    },
+                    "Transform": {
+                        "Position": [
+                            50,
+                            -8
+                        ],
+                        "Rotation": 0
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": -1,
+                        "Image": "Levels/Cliff.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 0.8,
+                        "yScale": 0.8
+                    },
+                    "Transform": {
+                        "Position": [
+                            55,
+                            -11
+                        ],
+                        "Rotation": 0
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": -1,
+                        "Image": "Levels/Cliff.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 0.8,
+                        "yScale": 0.8
+                    },
+                    "Transform": {
+                        "Position": [
+                            52,
+                            -13
+                        ],
+                        "Rotation": 0
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": 0,
+                        "Image": "Levels/Planet512.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            -25,
+                            45.5
+                        ],
+                        "Rotation": 0
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": 0,
+                        "Image": "Levels/Ground_34x10.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            0,
+                            0
+                        ],
+                        "Rotation": 0
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": 0,
+                        "Image": "Levels/Ground_34x10.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            60,
+                            0
+                        ],
+                        "Rotation": 0
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": 0,
+                        "Image": "Levels/triplanet.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            -20,
+                            -10
+                        ],
+                        "Rotation": 0
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": 0,
+                        "Image": "Levels/triplanet.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            -15,
+                            -25
+                        ],
+                        "Rotation": 0
+                    }
+                },
+                {
+                    "Name": null,
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": 0,
+                        "Image": "Levels/hazard.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 0.5,
+                        "yScale": 0.5
+                    },
+                    "Transform": {
+                        "Position": [
+                            -15,
+                            -25
+                        ],
+                        "Rotation": 0
+                    }
+                }
+            ]
+        }
+    ]
+}

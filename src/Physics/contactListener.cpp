@@ -4,27 +4,6 @@
  
 	Created by Chad on 11/12/08.
 	Copyright 2009 BlitThis! studios. All rights reserved.
-
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without
-restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the
-Software is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
  */
 #include "ContactListener.h"
 #include <Box2D/Box2D.h>
@@ -72,10 +51,22 @@ void AdventureListener::EndContact(b2Contact* contact)
 	m_Contacts.push_back( mCon );
 }
 
+//TODO: do I want to add callbacks to SceneObject to filter these?
 void AdventureListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
 {
 	const b2Filter& filter1 = contact->GetFixtureA()->GetFilterData();
 	const b2Filter& filter2 = contact->GetFixtureB()->GetFilterData();
+
+	
+	SceneObject *obj1 = (SceneObject*)contact->GetFixtureA()->GetBody()->GetUserData();
+	SceneObject *obj2 = (SceneObject*)contact->GetFixtureB()->GetBody()->GetUserData();
+
+	//Is this all I need?
+	//would be a virtual call to sceneobject inheritors, then filter through components
+	//if (!obj1->PreSolve(obj2, contact, oldManifold) || !obj2->PreSolve(obj1, contact, oldManifold)) {
+	//	contact->SetEnabled(false);
+	//}
+
 	//Detect player collision on platforms
 	if (filter1.categoryBits & 0x00F0 &&
   		filter2.categoryBits & 0x000F) {
@@ -131,7 +122,6 @@ void AdventureListener::Update()
 				ic->obj2->onColFinish(ic->fix2, ic->obj1, ic->manifold);
 		}
 	}
-
 	// Remove defunct contacts
 	m_Contacts.clear();
 }

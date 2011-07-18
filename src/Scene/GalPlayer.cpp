@@ -5,27 +5,6 @@
    Created by Chad Godsey on 7/12/09.
   
  Copyright 2009 BlitThis! studios.
-
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without
-restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the
-Software is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #include <MUGE.h>
@@ -38,6 +17,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 GalPlayer::GalPlayer()
 {
+	m_Name = "Player";
 	m_AnimState = NULL;
 	//m_shootRate = 5;
 	//m_shotTimer = m_shootRate;
@@ -246,21 +226,6 @@ void GalPlayer::init(character _char)
 				24,
 				32,
 				20);
-		/*
-		m_Anims["Walk"] = rendMan->createSpriteSheet( 0,
-				Gosu::resourcePrefix() + L"Images/BoxManWalk_Right.png", 
-				128,//24,
-				96,//32,
-				50);
-		m_Anims["WalkLeft"] = rendMan->createSpriteSheet( 0,
-				Gosu::resourcePrefix() + L"Images/BoxManWalk_Left.png", 
-				128,//24,
-				96,//32,,
-				50);
-		
-		m_Anims["Walk"]->setScaling(0.34, 0.34);
-		m_Anims["WalkLeft"]->setScaling(0.34, 0.34);
-		*/
 		m_Message = NULL;//rendMan->createMessage(L"I must help these people, for science!", m_Position.x, m_Position.y, true);
 	}
 	m_Anims["Walk"]->setVisible(true);

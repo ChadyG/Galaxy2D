@@ -1,0 +1,106 @@
+{
+	"Worlds" : [
+		{
+			"Name" : "world1",
+			"Position" : [ -25, -8],
+			"Image" : "Levels/Planet64.png",
+			"Up" : "",
+			"Right" : "world2",
+			"Down" : "",
+			"Left" : "",
+			"Condition" : "",
+			"Levels" : [
+				{
+					"Name" : "level1",
+					"Position" : [ -25, -8],
+					"Image" : "Levels/Planet64.png",
+					"Up" : "",
+					"Right" : "level2",
+					"Down" : "",
+					"Left" : "",
+					"Condition" : ""
+				},
+				{
+					"Name" : "level2",
+					"Position" : [ -15, -8],
+					"Image" : "Levels/Planet64.png",
+					"Up" : "",
+					"Right" : "level3",
+					"Down" : "",
+					"Left" : "level1",
+					"Condition" : "level1.complete"
+				},
+				{
+					"Name" : "level3",
+					"Position" : [ -5, -8],
+					"Image" : "Levels/Planet64.png",
+					"Up" : "",
+					"Right" : "level4",
+					"Down" : "",
+					"Left" : "level2",
+					"Condition" : "level2.complete"
+				},
+				{
+					"Name" : "level4",
+					"Position" : [ 5, -8],
+					"Image" : "Levels/Planet64.png",
+					"Up" : "",
+					"Right" : "",
+					"Down" : "level5",
+					"Left" : "level3",
+					"Condition" : "level3.complete"
+				},
+				{
+					"Name" : "level5",
+					"Position" : [ 5, 8],
+					"Image" : "Levels/Planet64.png",
+					"Up" : "level4",
+					"Right" : "",
+					"Down" : "",
+					"Left" : "",
+					"Condition" : "level4.complete"
+				}
+			]
+		},
+		{
+			"Name" : "world2",
+			"Position" : [ -15, -8],
+			"Image" : "Levels/Planet64.png",
+			"Up" : "",
+			"Right" : "world3",
+			"Down" : "",
+			"Left" : "world1",
+			"Condition" : "world1.complete"
+		},
+		{
+			"Name" : "world3",
+			"Position" : [ -5, -8],
+			"Image" : "Levels/Planet64.png",
+			"Up" : "",
+			"Right" : "world4",
+			"Down" : "",
+			"Left" : "world2",
+			"Condition" : "world2.complete"
+		},
+		{
+			"Name" : "world4",
+			"Position" : [ 5, -8],
+			"Image" : "Levels/Planet64.png",
+			"Up" : "",
+			"Right" : "",
+			"Down" : "world5",
+			"Left" : "world3",
+			"Condition" : "world3.complete"
+		},
+		{
+			"Name" : "world5",
+			"Position" : [ 5, 8],
+			"Image" : "Levels/Planet64.png",
+			"Up" : "world4",
+			"Right" : "",
+			"Down" : "",
+			"Left" : "",
+			"Condition" : "world4.complete"
+		}
+	]
+}

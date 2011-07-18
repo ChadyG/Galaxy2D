@@ -5,15 +5,51 @@ Galaxy2D - TODO list
  - Overworld map thing like SMB3+
  - some method of keeping track of player progress
  - Proper inventory
+	- multiple panes, slide animation between
+		- weapons
+		- player skills/stats
+		- objectives(?)
+		- minigames
+	- loose graph of objects in graph (connection to up, down, left, right)
+	- iterator on inventory itself for cursor to follow graph
  - Level creation workflow
+	- GLEED2D
+		- JSON read/write (DONE)
+		- game specific component support
+			- hard code in
+		- physics objects
+			- use vector drawing paired with normal objects in scene
+			- requires modifying editor logic
+			- one to many relationship between objects and vector shapes
  - Enemy AI
-    - rename AISimple to AIRolling
+    - rename AISimple to AIRolling (hamster in ball)
         determine how this affects player
         does it just get in the way?
         does it explode on contact?
         does it hide when near and emit spikes?
     - Flying : follow path (copy from floating platforms)
+		- birds/bats
+		- owls
+		- birds of prey (eagles, hawks)
+		- people in hang gliders
     - Roaming : seek out player
+		- small 
+			- squirrels
+			- hamsters
+			- bunnies
+		- medium 
+			- cats
+			- beavers (what is this, the 80s?)
+			- raccoons (bandits)
+			- 
+		- large 
+			- wolves
+			- bears
+			- mountain lions
+		- people
+			- hobos
+			- businessmen
+			- police
     - other stuff
  - tighten movement
  
@@ -30,3 +66,6 @@ Galaxy2D - TODO list
 		condition : ""
 	}
  ]
+
+ 
+ Make platform component

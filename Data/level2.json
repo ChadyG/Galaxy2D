@@ -1,0 +1,431 @@
+{
+	"CanvasColor" : [255, 107, 7, 105],
+	"Scale" : 10,
+	"PlayerSpawn" : [ -20.0, -10.0],
+	"Music" : "Colugo-Fantastic_face.ogg",
+	"Layers" : [
+		{
+			"ID" : "background",
+			"Layer" : -4,
+			"Scale" : 10.0
+		},
+		{
+			"ID" : "midground",
+			"Layer" : -3,
+			"Scale" : 5.0
+		},
+		{
+			"ID" : "nearmidground",
+			"Layer" : -2,
+			"Scale" : 2.0
+		},
+		{
+			"ID" : "behind_player",
+			"Layer" : -1,
+			"Scale" : 1.0
+		},
+		{
+			"ID" : "planets",
+			"Layer" : 0,
+			"Scale" : 1.0
+		}
+	],
+		
+	"Objects" : [
+		{
+			"GroupName" : "Clouds_Background3",
+			"Children" : [
+				{
+					"Name" : "cloud1",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : -4,
+						"Image" : "Levels/cloud_1.png",
+						"ColorMod" : [255, 255, 255, 255],
+						"xScale" : 1.0,
+						"yScale" : 1.0
+					},
+					"Transform" : {
+						"Position" : [ 0.0, 0.0],
+						"Rotation" : 0.0
+					}
+				},
+				{
+					"Name" : "cloud2",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : -4,
+						"Image" : "Levels/cloud_2.png",
+						"ColorMod" : [255, 255, 255, 255],
+						"xScale" : 1.0,
+						"yScale" : 1.0
+					},
+					"Transform" : {
+						"Position" : [ 60.0, -5.0],
+						"Rotation" : 0.0
+					}
+				}
+			]
+		},
+		
+		
+		{
+			"GroupName" : "Clouds_Background2",
+			"Children" : [
+				{
+					"Name" : "cloud3",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : -3,
+						"Image" : "Levels/cloud_13.png",
+						"ColorMod" : [255, 255, 255, 255],
+						"xScale" : 1.0,
+						"yScale" : 1.0
+					},
+					"Transform" : {
+						"Position" : [ -20.0, 15.0],
+						"Rotation" : 0.0
+					}
+				},
+				{
+					"Name" : "cloud4",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : -3,
+						"Image" : "Levels/cloud_14.png",
+						"ColorMod" : [255, 255, 255, 255],
+						"xScale" : 1.0,
+						"yScale" : 1.0
+					},
+					"Transform" : {
+						"Position" : [ 0.0, -18.0],
+						"Rotation" : 0.0
+					}
+				},
+				{
+					"Name" : "cloud5",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : -3,
+						"Image" : "Levels/cloud_15.png",
+						"ColorMod" : [255, 255, 255, 255],
+						"xScale" : 1.0,
+						"yScale" : 1.0
+					},
+					"Transform" : {
+						"Position" : [ 15.0, 25.0],
+						"Rotation" : 0.0
+					}
+				},
+				{
+					"Name" : "cloud6",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : -3,
+						"Image" : "Levels/cloud_13.png",
+						"ColorMod" : [255, 255, 255, 255],
+						"xScale" : 1.0,
+						"yScale" : 1.0
+					},
+					"Transform" : {
+						"Position" : [ 20.0, 15.0],
+						"Rotation" : 45.0
+					}
+				},
+				{
+					"Name" : "cloud7",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : -3,
+						"Image" : "Levels/cloud_14.png",
+						"ColorMod" : [255, 255, 255, 255],
+						"xScale" : 1.0,
+						"yScale" : 1.0
+					},
+					"Transform" : {
+						"Position" : [ 35.0, -20.0],
+						"Rotation" : 90.0
+					}
+				},
+				{
+					"Name" : "cloud8",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : -3,
+						"Image" : "Levels/cloud_15.png",
+						"ColorMod" : [255, 255, 255, 255],
+						"xScale" : 1.0,
+						"yScale" : 1.0
+					},
+					"Transform" : {
+						"Position" : [ 45.0, 25.0],
+						"Rotation" : 20.0
+					}
+				}
+			]
+		},
+		
+		{
+			"GroupName" : "Clouds_Background1",
+			"Children" : [
+				{
+					"Name" : "cloud9",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : -2,
+						"Image" : "Levels/cloud_11.png",
+						"ColorMod" : [205, 225, 225, 225],
+						"xScale" : 0.8,
+						"yScale" : 0.8
+					},
+					"Transform" : {
+						"Position" : [ -20.0, 15.0],
+						"Rotation" : 60.0
+					}
+				},
+				{
+					"Name" : "cloud10",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : -2,
+						"Image" : "Levels/cloud_9.png",
+						"ColorMod" : [205, 225, 225, 225],
+						"xScale" : 0.8,
+						"yScale" : 0.8
+					},
+					"Transform" : {
+						"Position" : [ 40.0, -25.0],
+						"Rotation" : 0.0
+					}
+				}
+			]
+		},
+
+		{
+			"GroupName" : "Cliffs",
+			"Children" : [
+				{
+					"Name" : "cliff1",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : -1,
+						"Image" : "Levels/Cliff.png",
+						"ColorMod" : [100, 255, 255, 255],
+						"xScale" : 0.8,
+						"yScale" : 0.8
+					},
+					"Transform" : {
+						"Position" : [ 7.0, -8.0],
+						"Rotation" : 0.0
+					},
+					"Physics" : {
+						"type" : "Static",
+						"position" : [ 7.0, -8.0],
+						"angle" : 0.0,
+						"Shapes" : [
+							{
+								"type" : "Rectangle",
+								"categoryBits" : 1,
+								"Width" : 3.0,
+								"Height" : 0.25,
+								"position" : [ 0.0, -3.5],
+								"density" : 0.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
+							}
+						]
+					}
+				},
+				{
+					"Name" : "cliff2",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : -1,
+						"Image" : "Levels/Cliff.png",
+						"ColorMod" : [255, 255, 255, 255],
+						"xScale" : 0.8,
+						"yScale" : 0.8
+					},
+					"Transform" : {
+						"Position" : [ 50.0, -8.0],
+						"Rotation" : 0.0
+					},
+					"Physics" : {
+						"type" : "Static",
+						"position" : [ 50.0, -8.0],
+						"angle" : 0.0,
+						"Shapes" : [
+							{
+								"type" : "Rectangle",
+								"categoryBits" : 1,
+								"Width" : 3.0,
+								"Height" : 0.1,
+								"position" : [ 0.0, -3.65],
+								"density" : 0.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
+							}
+						]
+					}
+				},
+				{
+					"Name" : "cliff3",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : -1,
+						"Image" : "Levels/Cliff.png",
+						"ColorMod" : [255, 255, 255, 255],
+						"xScale" : 0.8,
+						"yScale" : 0.8
+					},
+					"Transform" : {
+						"Position" : [ 55.0, -11.0],
+						"Rotation" : 0.0
+					},
+					"Physics" : {
+						"type" : "Static",
+						"position" : [ 55.0, -11.0],
+						"angle" : 0.0,
+						"Shapes" : [
+							{
+								"type" : "Rectangle",
+								"categoryBits" : 1,
+								"Width" : 3.0,
+								"Height" : 0.25,
+								"position" : [ 0.0, -3.5],
+								"density" : 0.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
+							}
+						]
+					}
+				},
+				{
+					"Name" : "cliff4",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : -1,
+						"Image" : "Levels/Cliff.png",
+						"ColorMod" : [255, 255, 255, 255],
+						"xScale" : 0.8,
+						"yScale" : 0.8
+					},
+					"Transform" : {
+						"Position" : [ 52.0, -13.0],
+						"Rotation" : 0.0
+					},
+					"Physics" : {
+						"type" : "Static",
+						"position" : [ 52.0, -13.0],
+						"angle" : 0.0,
+						"Shapes" : [
+							{
+								"type" : "Rectangle",
+								"categoryBits" : 1,
+								"Width" : 3.0,
+								"Height" : 0.25,
+								"position" : [ 0.0, -3.5],
+								"density" : 0.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
+							}
+						]
+					}
+				}
+			]
+		},
+		
+		{
+			"GroupName" : "Planets",
+			"Children" : [
+				{
+					"Name" : "planetBig",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : 0,
+						"Image" : "Levels/Planet512.png",
+						"ColorMod" : [255, 255, 255, 255],
+						"xScale" : 1.0,
+						"yScale" : 1.0
+					},
+					"Transform" : {
+						"Position" : [ -25.0, 45.5],
+						"Rotation" : 0.0
+					},
+					"Physics" : {
+						"type" : "Static",
+						"position" : [ -25.0, 45.5],
+						"angle" : 0.0,
+						"Shapes" : [
+							{
+							"type" : "Circle",
+							"categoryBits" : 256,
+							"radius" : 25.6,
+							"position" : [ 0.0, 0.0],
+							"density" : 0.0,
+							"friction" : 1.3,
+							"restitution" : 0.25
+							}
+						]
+					},
+					"Planet" : {
+						"Gravity" : 15.0
+					}
+				},
+				{
+					"Name" : "PlanetGround",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : 0,
+						"Image" : "Levels/Ground_34x10.png",
+						"ColorMod" : [255, 255, 255, 255],
+						"xScale" : 1.0,
+						"yScale" : 1.0
+					},
+					"Transform" : {
+						"Position" : [ 0.0, 0.0],
+						"Rotation" : 0.0
+					},
+					"Physics" : {
+						"type" : "Static",
+						"position" : [ 0.0, 0.0],
+						"angle" : 0.0,
+						"Shapes" : [
+							{
+								"type" : "Rectangle",
+								"categoryBits" : 256,
+								"Width" : 27.2,
+								"Height" : 8.0,
+								"position" : [ 0.0, 0.0],
+								"density" : 0.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
+							}
+						]
+					},
+					"Planet" : {
+						"Gravity" : 12.0
+					}
+				}
+			]
+		},
+		{
+			"GroupName" : "AI",
+			"Children" : [
+				{
+					"Name" : "baddy1",
+					"Transform" : {
+						"Position" : [ -15.0, 15.0],
+						"Rotation" : 0.0
+					},
+					"AISimple" : {
+						"Position" : [ -15.0, 15.0],
+						"walkLeft" : false
+					}
+				}
+			]
+		}
+	], //Objects
+	"Joints" : [
+	]
+}
