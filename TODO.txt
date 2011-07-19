@@ -2,6 +2,7 @@
 Galaxy2D - TODO list
 ========================================
 
+ - Finish ColStart/ColFinish callbacks for platform components
  - Overworld map thing like SMB3+
  - some method of keeping track of player progress
  - Proper inventory
