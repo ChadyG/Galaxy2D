@@ -20,6 +20,7 @@ Floating::Floating(SceneObject *_obj)
 void Floating::encodeWith(Json::Value *_val)
 {
 	(*_val)["Loop"] = Json::Value(m_loop);
+	(*_val)["Repeat"] = Json::Value(m_repeat);
 	(*_val)["Speed"] = Json::Value(m_speed);
 	
 	std::list< b2Vec2 >::iterator pit;
@@ -34,6 +35,7 @@ void Floating::encodeWith(Json::Value *_val)
 void Floating::initWith(Json::Value _val)
 {
 	m_loop = _val.get("Loop", true).asBool();
+	m_repeat = _val.get("Repeat", true).asBool();
 	m_speed = _val.get("Speed", 0.5).asDouble();
 	
 	for (int i = 0; i < _val["Points"].size(); ++i) {
@@ -70,6 +72,10 @@ void Floating::update()
 			m_nextPoint++;
 			if (m_nextPoint == m_points.end()) {
 				if (m_loop) {
+					m_curPoint = m_points.begin();
+					m_nextPoint = m_points.begin();
+					m_nextPoint++;
+				}else if(m_repeat) {
 					m_forward = false;
 					m_nextPoint = m_curPoint;
 					m_nextPoint--;
@@ -80,6 +86,10 @@ void Floating::update()
 		}else{
 			if (m_nextPoint == m_points.begin()) {
 				if (m_loop) {
+					m_curPoint = m_points.end();
+					m_nextPoint = m_points.end();
+					m_nextPoint--;
+				}else if(m_repeat) {
 					m_forward = true;
 					m_curPoint = m_nextPoint;
 					m_nextPoint++;

@@ -234,6 +234,10 @@
 								"restitution" : 0.25
 							}
 						]
+					},
+					"OneWayPlatform" : {
+					  "Enabled" : true,
+					  "DropThrough" : false
 					}
 				},
 				{
@@ -266,6 +270,10 @@
 								"restitution" : 0.25
 							}
 						]
+					},
+					"OneWayPlatform" : {
+					  "Enabled" : true,
+					  "DropThrough" : false
 					}
 				},
 				{
@@ -298,6 +306,10 @@
 								"restitution" : 0.25
 							}
 						]
+					},
+					"OneWayPlatform" : {
+					  "Enabled" : true,
+					  "DropThrough" : false
 					}
 				},
 				{
@@ -330,6 +342,10 @@
 								"restitution" : 0.25
 							}
 						]
+					},
+					"OneWayPlatform" : {
+					  "Enabled" : true,
+					  "DropThrough" : false
 					}
 				}
 			]
@@ -478,25 +494,27 @@
 						"Layer" : 0,
 						"Image" : "Levels/triplanet.png",
 						"ColorMod" : [255, 255, 255, 255],
+						"Rotation" : 180.0,
 						"xScale" : 1.0,
 						"yScale" : 1.0
 					},
 					"Transform" : {
 						"Position" : [ -20.0, -10.0],
-						"Rotation" : 0.0
+						"Rotation" : 180.0
 					},
 					"Physics" : {
 						"type" : "Dynamic",
-						"position" : [ -20.0, -15.0],
+						"position" : [ -20.0, -10.0],
 						"angle" : 0.0,
 						"Shapes" : [
 							{
 							"type" : "Polygon",
 							"categoryBits" : 256,
+							"conveyorSpeed" : -10.0,
 							"vertices" : [
-								[-3.0, -3.0],
-								[3.0, -2.5],
-								[3.0, 2.5]
+								[3.0, 2.5],
+								[-3.0, 2.5],
+								[-3.0, -2.5]
 							],
 							"position" : [ 0.0, 0.0],
 							"density" : 500.0,
@@ -510,11 +528,11 @@
 					}
 				},
 				{
-					"Name" : "triplanet2",
+					"Name" : "floating_platform",
 					"Renderable" : {
 						"Type" : "Sprite",
 						"Layer" : 0,
-						"Image" : "Levels/triplanet.png",
+						"Image" : "Levels/platform.png",
 						"ColorMod" : [255, 255, 255, 255],
 						"xScale" : 1.0,
 						"yScale" : 1.0
@@ -530,17 +548,14 @@
 						"fixedRotation" : true,
 						"Shapes" : [
 							{
-							"type" : "Polygon",
-							"categoryBits" : 256,
-							"vertices" : [
-								[-3.0, -3.0],
-								[3.0, -2.5],
-								[3.0, 2.5]
-							],
-							"position" : [ 0.0, 0.0],
-							"density" : 500.0,
-							"friction" : 1.3,
-							"restitution" : 0.25
+							    "type" : "Rectangle",
+								"categoryBits" : 256,
+								"Width" : 3.0,
+								"Height" : 0.75,
+								"position" : [ 0.0, 0.0],
+								"density" : 500.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
 							}
 						]
 					},
@@ -548,11 +563,15 @@
 						"Gravity" : 6.0
 					},
 					"Floating" : {
-						"Speed" : 2.0,
+						"Speed" : 5.0,
 						"Loop" : true,
+						"Repeat" : false,
 						"Points" : [
 							[ -10.0, -25.0],
-							[ 35.0, -25.0]
+							[ 35.0, -25.0],
+							[ 35.0, -15.0],
+							[ -10.0, -15.0],
+							[ -10.0, -25.0]
 						]
 					}
 				},
@@ -567,12 +586,12 @@
 						"yScale" : 0.5
 					},
 					"Transform" : {
-						"Position" : [ -15.0, -25.0],
+						"Position" : [ 0.0, -20.0],
 						"Rotation" : 0.0
 					},
 					"Physics" : {
 						"type" : "Static",
-						"position" : [ -15.0, -25.0],
+						"position" : [ 0.0, -20.0],
 						"angle" : 0.0,
 						"fixedRotation" : true,
 						"Shapes" : [

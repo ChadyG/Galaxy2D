@@ -349,7 +349,7 @@ void GalPlayer::findGround()
 {
 	//query world for surrounding shapes
 	list_QueryCallback callback;
-	callback.filter = 0x0100;
+	callback.filter = 0xFFFF;
 	b2AABB aabb;
 	aabb.lowerBound.Set(m_Position.x-50.0f, m_Position.y-50.0f);
 	aabb.upperBound.Set(m_Position.x+50.0f, m_Position.y+50.0f);
@@ -367,33 +367,37 @@ void GalPlayer::findGround()
 		std::list< b2Fixture* >::iterator it;
 		for (it = callback.fixtures.begin(); it != callback.fixtures.end(); ++it) {
 			curPlanet = (*it)->GetShape();
-		
-			b2DistanceInput input;
-			input.proxyA.Set(&mshape);
-			input.proxyB.Set(curPlanet);
-			input.transformA = mtransform;
-			input.transformB = (*it)->GetBody()->GetTransform();
-			input.useRadii = true;
-			b2SimplexCache cache;
-			cache.count = 0;
-			b2DistanceOutput output;
-			b2Distance(&output, &cache, &input);
+			SceneObject* obj = (SceneObject*)(*it)->GetBody()->GetUserData();
 
-			if (output.distance < nearest) {
-				nearPlanet = curPlanet;
-				nearest = output.distance;
-				b2RayCastOutput rback;
-				b2RayCastInput rin;
-				rin.p1 = output.pointA;
-				rin.p2 = output.pointB;
-				rin.maxFraction = 2.f;
-				nearPlanet->RayCast(&rback, rin, (*it)->GetBody()->GetTransform());
-				m_GravityNormal = rback.normal;
-				m_Gravity = output.pointB - m_Position;
-				m_Gravity.Normalize();
-				SceneObject* obj = (SceneObject*)(*it)->GetBody()->GetUserData();
-				PlanetComp* plan = (PlanetComp*)(obj->getComponent("Planet"));
-				m_Gravity = plan->getMass() * 2.0f * m_Gravity;//((PlanetComp*)((SceneObject*)(*it)->GetBody()->GetUserData())->getComponent("Transform"))->getMass() * 2.0f * m_Gravity;
+			if (obj->hasComponent("Planet")) {
+
+				b2DistanceInput input;
+				input.proxyA.Set(&mshape);
+				input.proxyB.Set(curPlanet);
+				input.transformA = mtransform;
+				input.transformB = (*it)->GetBody()->GetTransform();
+				input.useRadii = true;
+				b2SimplexCache cache;
+				cache.count = 0;
+				b2DistanceOutput output;
+				b2Distance(&output, &cache, &input);
+
+				if (output.distance < nearest) {
+					nearPlanet = curPlanet;
+					nearest = output.distance;
+					b2RayCastOutput rback;
+					b2RayCastInput rin;
+					rin.p1 = output.pointA;
+					rin.p2 = output.pointB;
+					rin.maxFraction = 2.f;
+					nearPlanet->RayCast(&rback, rin, (*it)->GetBody()->GetTransform());
+					m_GravityNormal = rback.normal;
+					m_Gravity = output.pointB - m_Position;
+					m_Gravity.Normalize();
+					//aaSceneObject* obj = (SceneObject*)(*it)->GetBody()->GetUserData();
+					PlanetComp* plan = (PlanetComp*)(obj->getComponent("Planet"));
+					m_Gravity = plan->getMass() * 2.0f * m_Gravity;//((PlanetComp*)((SceneObject*)(*it)->GetBody()->GetUserData())->getComponent("Transform"))->getMass() * 2.0f * m_Gravity;
+				}
 			}
 		}
 		if (m_Gravity.Length() < 10.0)

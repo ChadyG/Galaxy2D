@@ -44,7 +44,7 @@ public:
 	/// Physics callback
 	void onColStart(b2Fixture *_fix, SceneObject *_other, b2Manifold _manifold);
 	void onColFinish(b2Fixture *_fix, SceneObject *_other, b2Manifold _manifold);
-	bool PreSolve(SceneObject *_other, b2Contact *_contact, b2Manifold *_manifold) {return true;}
+	bool PreSolve(SceneObject *_other, b2Contact *_contact, const b2Manifold *_manifold) {return true;}
 
 	/// Message passing
 	void onMessage(std::string _message);

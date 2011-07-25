@@ -24,7 +24,7 @@ public:
 	/// Physics callback
 	void onColStart(b2Fixture *_fix, SceneObject *_other, b2Manifold _manifold);
 	void onColFinish(b2Fixture *_fix, SceneObject *_other, b2Manifold _manifold);
-	bool PreSolve(SceneObject *_other, b2Contact *_contact, b2Manifold *_manifold) {return true;}
+	bool PreSolve(SceneObject *_other, b2Contact *_contact, const b2Manifold *_manifold) {return true;}
 
 	/// Message passing
 	void onMessage(std::string _message);
@@ -37,7 +37,7 @@ private:
 	std::list< b2Vec2 > m_points;
 	std::list< b2Vec2 >::iterator m_curPoint, m_nextPoint;
 
-	bool m_loop, m_forward, m_finished;
+	bool m_loop, m_repeat, m_forward, m_finished;
 	double m_speed, m_ldist;
 	b2Body *m_body;
 };

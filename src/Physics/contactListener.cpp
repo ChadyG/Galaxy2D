@@ -63,12 +63,12 @@ void AdventureListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifo
 
 	//Is this all I need?
 	//would be a virtual call to sceneobject inheritors, then filter through components
-	//if (!obj1->PreSolve(obj2, contact, oldManifold) || !obj2->PreSolve(obj1, contact, oldManifold)) {
-	//	contact->SetEnabled(false);
-	//}
+	if (!obj1->PreSolve(obj2, contact, oldManifold) || !obj2->PreSolve(obj1, contact, oldManifold)) {
+		contact->SetEnabled(false);
+	}
 
 	//Detect player collision on platforms
-	if (filter1.categoryBits & 0x00F0 &&
+	/*if (filter1.categoryBits & 0x00F0 &&
   		filter2.categoryBits & 0x000F) {
 		GalPlayer *play = (GalPlayer*)contact->GetFixtureA()->GetBody()->GetUserData();
 		SceneObject *obj = (SceneObject*)contact->GetFixtureB()->GetBody()->GetUserData();
@@ -101,7 +101,7 @@ void AdventureListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifo
 		if (dot < 0.0f || mdot < 0.0f) {
 			contact->SetEnabled(false);
 		}
-	}
+	}*/
 }
 void AdventureListener::Update()
 {
