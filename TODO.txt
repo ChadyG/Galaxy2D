@@ -27,11 +27,14 @@ Galaxy2D - TODO list
         does it just get in the way?
         does it explode on contact?
         does it hide when near and emit spikes?
-    - Flying : follow path (copy from floating platforms)
-		- birds/bats
-		- owls
-		- birds of prey (eagles, hawks)
-		- people in hang gliders
+    - Flying : 
+		- follow path (copy from floating platforms)
+		- seek out when near (dive bomb etc.)
+		- Types
+			- birds/bats
+			- owls
+			- birds of prey (eagles, hawks)
+			- people in hang gliders
     - Roaming : seek out player
 		- small 
 			- squirrels

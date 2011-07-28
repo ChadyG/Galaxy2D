@@ -53,6 +53,7 @@ void Floating::initWith(Json::Value _val)
 
 void Floating::update() 
 {
+	//Initialize
 	if (m_body == NULL) {
 		m_body = &((PhysComponent*)m_Obj->getComponent("Physics"))->getBody();
 
@@ -62,6 +63,7 @@ void Floating::update()
 	}
 	if (m_finished)
 		return;
+
 	//check for proximity to next point
 	b2Vec2 pos = m_body->GetWorldCenter();
 	double d = Gosu::distance(pos.x, pos.y, m_nextPoint->x, m_nextPoint->y);
@@ -103,6 +105,7 @@ void Floating::update()
 		}
 	}
 	
+	//Move along path
 	if (m_nextPoint != m_points.end()) {
 		b2Vec2 dvec = (*m_nextPoint) - pos;
 		dvec.Normalize();

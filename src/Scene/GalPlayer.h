@@ -1,6 +1,6 @@
 /*
 	Player.h
-	My Unnamed Game Engine
+	Galaxy2D
  
 	Created by Chad on 11/12/08.
 	Copyright 2009 BlitThis! studios. All rights reserved.

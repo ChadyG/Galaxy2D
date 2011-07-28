@@ -51,3 +51,50 @@ protected:
 	Component* makeComponent(SceneObject *_obj);
 	static AISimplecom_maker s_RegisteredMaker;
 };
+
+
+class AIFlying : public Component
+{
+public:
+	AIFlying(SceneObject *_obj);
+	
+	//Returns the name of this component type
+	std::string name() { return std::string("AIFlying"); }
+	
+	void findGround();
+	//logic update callback
+	void update();
+	
+	/// Physics callback
+	void onColStart(b2Fixture *_fix, SceneObject *_other, b2Manifold _manifold);
+	void onColFinish(b2Fixture *_fix, SceneObject *_other, b2Manifold _manifold);
+	bool PreSolve(SceneObject *_other, b2Contact *_contact, const b2Manifold *_manifold) {return true;}
+	
+	/// Message passing
+	void onMessage(std::string _message);
+	
+	//Serialization/Deserialization
+	void encodeWith(Json::Value *_val);
+	void initWith(Json::Value _val);
+	
+private:
+	b2Body *m_Body;
+	b2World *m_World;
+	Sprite *m_Sprite;
+	
+	std::list< b2Vec2 > m_points;
+	std::list< b2Vec2 >::iterator m_curPoint, m_nextPoint;
+
+	bool m_loop, m_repeat, m_forward, m_finished;
+	double m_speed, m_ldist;
+};
+
+/// Builder for Trigger component
+class AIFlyingcom_maker : public Component_maker
+{
+public:
+	AIFlyingcom_maker() : Component_maker("AIFlying") {}
+protected:
+	Component* makeComponent(SceneObject *_obj);
+	static AIFlyingcom_maker s_RegisteredMaker;
+};

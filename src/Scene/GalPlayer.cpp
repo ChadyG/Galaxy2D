@@ -1,6 +1,6 @@
 /*
    GalPlayer.h
-   My Unnamed Game Engine
+   Galaxy2D
  
    Created by Chad Godsey on 7/12/09.
   

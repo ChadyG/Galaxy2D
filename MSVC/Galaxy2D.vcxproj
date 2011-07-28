@@ -119,9 +119,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AdventureState.h" />
+    <ClInclude Include="..\src\Inventory\Inventory.h" />
     <ClInclude Include="..\src\Inventory\Weapon.h" />
     <ClInclude Include="..\src\LevelSelectState.h" />
     <ClInclude Include="..\src\MainMenuState.h" />
+    <ClInclude Include="..\src\Minigames\Minigame.h" />
     <ClInclude Include="..\src\Physics\CollisionProcessing.h" />
     <ClInclude Include="..\src\Physics\ContactListener.h" />
     <ClInclude Include="..\src\Physics\QueryCallback.h" />
@@ -134,6 +136,7 @@
     <ClInclude Include="..\src\Scene\PlanetObj.h" />
     <ClInclude Include="..\src\Scene\Projectile.h" />
     <ClInclude Include="..\src\TitleState.h" />
+    <ClInclude Include="..\src\UI\PauseMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

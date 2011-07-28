@@ -1,11 +1,9 @@
 /*
-   ContactListener.h
-   My Unnamed Game Engine
+	ContactListener.h
+	My Unnamed Game Engine
  
-   Created by Chad Godsey on 11/12/08.
-  
-  
- Copyright 2009 BlitThis! studios.
+	Created by Chad Godsey on 11/12/08.
+	Copyright 2009 BlitThis! studios.
  */
  
 #include <Box2D/Box2D.h>
