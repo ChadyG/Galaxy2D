@@ -22,6 +22,7 @@ GalPlayer::GalPlayer()
 	//m_shootRate = 5;
 	//m_shotTimer = m_shootRate;
 
+	m_hurtTimer = 0;
 	m_JumpTotTime = 25;
 	m_jumpTimer = 0;
 	m_SpeedSum = 1.f;

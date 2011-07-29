@@ -138,6 +138,9 @@
     <ClInclude Include="..\src\TitleState.h" />
     <ClInclude Include="..\src\UI\PauseMenu.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Galaxy2D.rc" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -34,8 +34,8 @@ public:
 	void initWith(Json::Value _val);
 	
 private:
-	std::list< b2Vec2 > m_points;
-	std::list< b2Vec2 >::iterator m_curPoint, m_nextPoint;
+	std::list< b2Transform > m_points;
+	std::list< b2Transform >::iterator m_curPoint, m_nextPoint;
 
 	bool m_loop, m_repeat, m_forward, m_finished;
 	double m_speed, m_ldist;

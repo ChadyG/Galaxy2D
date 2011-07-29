@@ -1,9 +1,9 @@
 {
 	"CanvasColor" : [255, 107, 7, 105],
+	"ContentRootFolder" : "C:\\Users\\Chad\\Projects\\Galaxy2D\\Images",
 	"Scale" : 10,
 	"PlayerSpawn" : [ -20.0, -10.0],
 	"Music" : "Colugo-Fantastic_face.ogg",
-	"ContentRootFolder":"C:/Users/Chad/Projects/Galaxy2D/Images",
 	"Layers" : [
 		{
 			"ID" : "background",
@@ -235,6 +235,10 @@
 								"restitution" : 0.25
 							}
 						]
+					},
+					"OneWayPlatform" : {
+					  "Enabled" : true,
+					  "DropThrough" : false
 					}
 				},
 				{
@@ -267,6 +271,10 @@
 								"restitution" : 0.25
 							}
 						]
+					},
+					"OneWayPlatform" : {
+					  "Enabled" : true,
+					  "DropThrough" : false
 					}
 				},
 				{
@@ -299,6 +307,10 @@
 								"restitution" : 0.25
 							}
 						]
+					},
+					"OneWayPlatform" : {
+					  "Enabled" : true,
+					  "DropThrough" : false
 					}
 				},
 				{
@@ -331,6 +343,10 @@
 								"restitution" : 0.25
 							}
 						]
+					},
+					"OneWayPlatform" : {
+					  "Enabled" : true,
+					  "DropThrough" : false
 					}
 				}
 			]
@@ -442,7 +458,94 @@
 					"Planet" : {
 						"Gravity" : 12.0
 					}
-				}
+				},
+                {
+                    "Name": "PlanetGround3",
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": 0,
+                        "Image": "Levels/Ground_34x10.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            180,
+                            0
+                        ],
+                        "Rotation": 0
+                    },
+					"Physics" : {
+						"type" : "Static",
+						"position" : [ 180.0, 0.0],
+						"angle" : 0.0,
+						"Shapes" : [
+							{
+								"type" : "Rectangle",
+								"categoryBits" : 256,
+								"Width" : 27.2,
+								"Height" : 8.0,
+								"position" : [ 0.0, 0.0],
+								"density" : 0.0,
+								"friction" : 1.3,
+								"conveyorSpeed" : 50.0,
+								"restitution" : 0.25
+							}
+						]
+					},
+					"Planet" : {
+						"Gravity" : 12.0
+					}
+                },
+                {
+                    "Name": "PlanetGround4",
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": 0,
+                        "Image": "Levels/Ground_34x10.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            -140,
+                            -80.0
+                        ],
+                        "Rotation": 0
+                    },
+					"Physics" : {
+						"type" : "Static",
+						"position" : [ -140.0, -80.0],
+						"angle" : 0.0,
+						"Shapes" : [
+							{
+								"type" : "Rectangle",
+								"categoryBits" : 256,
+								"Width" : 27.2,
+								"Height" : 8.0,
+								"position" : [ 0.0, 0.0],
+								"density" : 0.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
+							}
+						]
+					},
+					"Planet" : {
+						"Gravity" : 12.0
+					}
+                }
 			]
 		},
 		{
@@ -479,23 +582,25 @@
 						"Layer" : 0,
 						"Image" : "Levels/triplanet.png",
 						"ColorMod" : [255, 255, 255, 255],
+						"Rotation" : 0.0,
 						"xScale" : 1.0,
 						"yScale" : 1.0
 					},
 					"Transform" : {
-						"Position" : [ -20.0, -10.0],
+						"Position" : [ -25.0, -10.0],
 						"Rotation" : 0.0
 					},
 					"Physics" : {
 						"type" : "Dynamic",
-						"position" : [ -20.0, -15.0],
-						"angle" : 0.0,
+						"position" : [ -25.0, -10.0],
+						"angle" : 3.14,
 						"Shapes" : [
 							{
 							"type" : "Polygon",
 							"categoryBits" : 256,
+							"conveyorSpeed" : -5.0,
 							"vertices" : [
-								[-3.0, -3.0],
+								[-3.0, -2.5],
 								[3.0, -2.5],
 								[3.0, 2.5]
 							],
@@ -511,11 +616,11 @@
 					}
 				},
 				{
-					"Name" : "triplanet2",
+					"Name" : "floating_platform",
 					"Renderable" : {
 						"Type" : "Sprite",
 						"Layer" : 0,
-						"Image" : "Levels/triplanet.png",
+						"Image" : "Levels/platform.png",
 						"ColorMod" : [255, 255, 255, 255],
 						"xScale" : 1.0,
 						"yScale" : 1.0
@@ -531,17 +636,14 @@
 						"fixedRotation" : true,
 						"Shapes" : [
 							{
-							"type" : "Polygon",
-							"categoryBits" : 256,
-							"vertices" : [
-								[-3.0, -3.0],
-								[3.0, -2.5],
-								[3.0, 2.5]
-							],
-							"position" : [ 0.0, 0.0],
-							"density" : 500.0,
-							"friction" : 1.3,
-							"restitution" : 0.25
+							    "type" : "Rectangle",
+								"categoryBits" : 256,
+								"Width" : 3.0,
+								"Height" : 0.75,
+								"position" : [ 0.0, 0.0],
+								"density" : 500.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
 							}
 						]
 					},
@@ -549,14 +651,285 @@
 						"Gravity" : 6.0
 					},
 					"Floating" : {
-						"Speed" : 2.0,
+						"Speed" : 5.0,
 						"Loop" : true,
+						"Repeat" : false,
 						"Points" : [
-							[ -10.0, -25.0],
-							[ 35.0, -25.0]
+							[ -10.0, -25.0, 0.0],
+							[ 35.0, -25.0, 3.14],
+							[ 35.0, -15.0, 0.0],
+							[ -10.0, -15.0, 3.14],
+							[ -10.0, -25.0, 0.0]
 						]
 					}
 				},
+				{
+					"Name" : "jump_platform",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : 0,
+						"Image" : "Levels/jump_platform.png",
+						"ColorMod" : [255, 255, 255, 255],
+						"xScale" : 1.0,
+						"yScale" : 1.0
+					},
+					"Transform" : {
+						"Position" : [ -40.0, -10.0],
+						"Rotation" : 0.0
+					},
+					"Physics" : {
+						"type" : "Dynamic",
+						"position" : [ -40.0, -10.0],
+						"angle" : 0.0,
+						"fixedRotation" : true,
+						"Shapes" : [
+							{
+							    "type" : "Rectangle",
+								"categoryBits" : 256,
+								"Width" : 3.0,
+								"Height" : 0.75,
+								"position" : [ 0.0, 0.0],
+								"density" : 500.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
+							}
+						]
+					},
+					"Planet" : {
+						"Gravity" : 6.0
+					},
+					"Floating" : {
+						"Speed" : 25.0,
+						"Loop" : true,
+						"Repeat" : false,
+						"Points" : [
+							[ -40.0, -10.0],
+							[ -40.0, -10.0]
+						]
+					}
+				},
+				{
+					"Name" : "jump_platform2",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : 0,
+						"Image" : "Levels/jump_platform.png",
+						"ColorMod" : [255, 255, 255, 255],
+						"xScale" : 1.0,
+						"yScale" : 1.0
+					},
+					"Transform" : {
+						"Position" : [ -60.0, -30.0],
+						"Rotation" : 0.0
+					},
+					"Physics" : {
+						"type" : "Dynamic",
+						"position" : [ -60.0, -30.0],
+						"angle" : 0.0,
+						"fixedRotation" : true,
+						"Shapes" : [
+							{
+							    "type" : "Rectangle",
+								"categoryBits" : 256,
+								"Width" : 3.0,
+								"Height" : 0.75,
+								"position" : [ 0.0, 0.0],
+								"density" : 500.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
+							}
+						]
+					},
+					"Planet" : {
+						"Gravity" : 6.0
+					},
+					"Floating" : {
+						"Speed" : 25.0,
+						"Loop" : true,
+						"Repeat" : false,
+						"Points" : [
+							[ -60.0, -30.0],
+							[ -60.0, -30.0]
+						]
+					}
+				},
+				{
+					"Name" : "jump_platform3",
+					"Renderable" : {
+						"Type" : "Sprite",
+						"Layer" : 0,
+						"Image" : "Levels/jump_platform.png",
+						"ColorMod" : [255, 255, 255, 255],
+						"xScale" : 1.0,
+						"yScale" : 1.0
+					},
+					"Transform" : {
+						"Position" : [ -80.0, -50.0],
+						"Rotation" : 0.0
+					},
+					"Physics" : {
+						"type" : "Dynamic",
+						"position" : [ -80.0, -50.0],
+						"angle" : 0.0,
+						"fixedRotation" : true,
+						"Shapes" : [
+							{
+							    "type" : "Rectangle",
+								"categoryBits" : 256,
+								"Width" : 3.0,
+								"Height" : 0.75,
+								"position" : [ 0.0, 0.0],
+								"density" : 500.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
+							}
+						]
+					},
+					"Planet" : {
+						"Gravity" : 6.0
+					},
+					"Floating" : {
+						"Speed" : 25.0,
+						"Loop" : true,
+						"Repeat" : false,
+						"Points" : [
+							[ -80.0, -50.0],
+							[ -80.0, -50.0]
+						]
+					}
+				},
+                {
+                    "Name": "spinner",
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": 0,
+                        "Image": "Levels/spinner.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            153.5,
+                            -6.3
+                        ],
+                        "Rotation": 0
+                    },
+					"Physics" : {
+						"type" : "Dynamic",
+						"position" : [ 130.0, -6.3],
+						"angle" : 0.0,
+						"fixedRotation" : false,
+						"Shapes" : [
+							{
+							    "type" : "Rectangle",
+								"categoryBits" : 256,
+								"Width" : 6.0,
+								"Height" : 0.75,
+								"position" : [ 0.0, 0.0],
+								"density" : 500.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
+							}
+						]
+					},
+					"Planet" : {
+						"Gravity" : 8.0
+					}
+                },
+                {
+                    "Name": "spinner2",
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": 0,
+                        "Image": "Levels/spinner.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            127.8,
+                            -6.4
+                        ],
+                        "Rotation": 0
+                    },
+					"Physics" : {
+						"type" : "Dynamic",
+						"position" : [ 110.0, -6.3],
+						"angle" : 0.0,
+						"fixedRotation" : false,
+						"Shapes" : [
+							{
+							    "type" : "Rectangle",
+								"categoryBits" : 256,
+								"Width" : 6.0,
+								"Height" : 0.75,
+								"position" : [ 0.0, 0.0],
+								"density" : 500.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
+							}
+						]
+					},
+					"Planet" : {
+						"Gravity" : 8.0
+					}
+                },
+                {
+                    "Name": "spinner3",
+                    "Renderable": {
+                        "Type": "Sprite",
+                        "Layer": 0,
+                        "Image": "Levels/spinner.png",
+                        "ColorMod": [
+                            255,
+                            255,
+                            255,
+                            255
+                        ],
+                        "xScale": 1,
+                        "yScale": 1
+                    },
+                    "Transform": {
+                        "Position": [
+                            -90.0,
+                            -70.0
+                        ],
+                        "Rotation": 0
+                    },
+					"Physics" : {
+						"type" : "Dynamic",
+						"position" : [ -90.0, -70.0],
+						"angle" : 0.0,
+						"fixedRotation" : false,
+						"Shapes" : [
+							{
+							    "type" : "Rectangle",
+								"categoryBits" : 256,
+								"Width" : 6.0,
+								"Height" : 0.75,
+								"position" : [ 0.0, 0.0],
+								"density" : 500.0,
+								"friction" : 1.3,
+								"restitution" : 0.25
+							}
+						]
+					},
+					"Planet" : {
+						"Gravity" : 8.0
+					}
+                },
 				{
 					"Name" : "hazard",
 					"Renderable" : {
@@ -568,12 +941,12 @@
 						"yScale" : 0.5
 					},
 					"Transform" : {
-						"Position" : [ -15.0, -25.0],
+						"Position" : [ 0.0, -20.0],
 						"Rotation" : 0.0
 					},
 					"Physics" : {
 						"type" : "Static",
-						"position" : [ -15.0, -25.0],
+						"position" : [ 0.0, -20.0],
 						"angle" : 0.0,
 						"fixedRotation" : true,
 						"Shapes" : [
@@ -614,12 +987,30 @@
 	], 
 	"Joints" : [
 		{
-			"type" : "Revolute",
-			"ObjectA" : "triplanet",
-			"ObjectB" : "squareplanet",
-			"position" : [ -20.0, -25.0],
+			"Type" : "Revolute",
+			"ObjectA" : "spinner2",
+			"ObjectB" : "PlanetGround2",
+			"Position" : [ 110.0, -6.3],
 			"enableMotor" : true,
 			"motorSpeed" : 0.25,
+			"maxMotorTorque" : 25000.0
+		},	
+		{
+			"Type" : "Revolute",
+			"ObjectA" : "spinner",
+			"ObjectB" : "PlanetGround2",
+			"Position" : [ 130.0, -6.3],
+			"enableMotor" : true,
+			"motorSpeed" : -0.75,
+			"maxMotorTorque" : 25000.0
+		},	
+		{
+			"Type" : "Revolute",
+			"ObjectA" : "spinner3",
+			"ObjectB" : "PlanetGround3",
+			"Position" : [ -90.0, -70.0],
+			"enableMotor" : true,
+			"motorSpeed" : -0.75,
 			"maxMotorTorque" : 25000.0
 		}
 	]
