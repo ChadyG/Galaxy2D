@@ -44,6 +44,16 @@
 			"Type" : "action"
 		},
 		{
+			"Action" : "Menu.PageLeft",
+			"Keys" : ["kbZ","gpLeft"],
+			"Type" : "action"
+		},
+		{
+			"Action" : "Menu.PageRight",
+			"Keys" : ["kbC","gpLeft"],
+			"Type" : "action"
+		},
+		{
 			"Action" : "Play.MoveRight",
 			"Keys" : ["kbD","gpRight"],
 			"Type" : "action"
@@ -71,6 +81,11 @@
 		{
 			"Action" : "Play.Swap",
 			"Keys" : ["kbQ","gpButton4"],
+			"Type" : "action"
+		},
+		{
+			"Action" : "Play.Pause",
+			"Keys" : ["kbE","gpButton4"],
 			"Type" : "action"
 		},
 		{

@@ -13,6 +13,7 @@
 //#include "Scene/Scene.h"
 #include "Scene/GalPlayer.h"
 #include "Scene/PlanetObj.h"
+#include "UI/PauseMenu.h"
 #include "Physics/ContactListener.h"
 
 class Core;
@@ -52,6 +53,9 @@ private:
 	Camera_Parallax m_Camera;
 	RenderManager m_rendMan;
 	AudioManager m_audMan;
+
+	// UI stuff
+	PauseMenu m_PauseUI;
 	
 	// Scene stuff
 	GalPlayer *m_Player;

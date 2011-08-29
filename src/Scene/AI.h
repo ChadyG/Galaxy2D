@@ -39,6 +39,9 @@ private:
 	b2World *m_World;
 	Sprite *m_Sprite;
 	
+	double m_health;
+	int m_hurtTimer;
+	
 	bool m_moveLeft;
 };
 
@@ -62,6 +65,8 @@ public:
 	std::string name() { return std::string("AIFlying"); }
 	
 	void findGround();
+	void findPoint();
+	void findPlayer();
 	//logic update callback
 	void update();
 	
@@ -82,11 +87,12 @@ private:
 	b2World *m_World;
 	Sprite *m_Sprite;
 	
-	std::list< b2Vec2 > m_points;
+	std::list< b2Vec2 > m_points, m_homingPoints;
 	std::list< b2Vec2 >::iterator m_curPoint, m_nextPoint;
 
-	bool m_loop, m_repeat, m_forward, m_finished;
-	double m_speed, m_ldist;
+	bool m_loop, m_repeat, m_forward, m_finished, m_isPath, m_homing;
+	double m_health, m_speed, m_ldist, m_proxDist, m_proxMax;
+	int m_hurtTimer;
 };
 
 /// Builder for Trigger component

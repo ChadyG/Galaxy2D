@@ -159,6 +159,8 @@ void AdventureState::update()
 	m_rendMan.update();
 	InputManager* input = InputManager::getCurrentContext();
 
+	m_PauseUI.update();
+
 	// Galaxy Camera stuff
 	b2Vec2 gravity = m_Player->getGravity();
 	
@@ -276,6 +278,8 @@ void AdventureState::draw() const
 	// Render all
 	//m_rendMan->setColor(m_colorMod);
 	m_rendMan.doRender();
+	
+	m_PauseUI.draw();
 }
 
 void AdventureState::resume()

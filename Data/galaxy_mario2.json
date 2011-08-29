@@ -981,6 +981,26 @@
 						"Position" : [ -15.0, 15.0],
 						"walkLeft" : false
 					}
+				},
+				{
+					"Name" : "baddy2",
+					"Transform" : {
+						"Position" : [ -50.0, -20.0],
+						"Rotation" : 0.0
+					},
+					"AIFlying" : {
+						"Position" : [ -50.0, -20.0],
+						"Proximity" : 5.0,
+						"ProximityMax" : 20.0,
+						"Health" : 50.0,
+						"Speed" : 5.0,
+						"Loop" : false,
+						"Repeat" : true,
+						"Points" : [
+							[ -50.0, -20.0],
+							[ -10.0, -20.0]
+						]
+					}
 				}
 			]
 		}

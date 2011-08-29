@@ -116,6 +116,7 @@
     <ClCompile Include="..\src\Scene\PlanetObj.cpp" />
     <ClCompile Include="..\src\Scene\Projectile.cpp" />
     <ClCompile Include="..\src\TitleState.cpp" />
+    <ClCompile Include="..\src\UI\PauseMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AdventureState.h" />

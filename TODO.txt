@@ -5,6 +5,7 @@ Galaxy2D - TODO list
  - Overworld map thing like SMB3+
  - some method of keeping track of player progress
  - Proper inventory
+	- pause actually pauses (?)
 	- multiple panes, slide animation between
 		- weapons
 		- player skills/stats
